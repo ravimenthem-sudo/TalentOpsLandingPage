@@ -64,7 +64,6 @@ export function HelpCenterPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Getting Started</h3>
               <p className="text-slate-600 mb-4 text-sm">Account setup, company branding, and initial configuration guides.</p>
-              <span className="text-blue-600 font-medium text-sm flex items-center gap-1">24 Articles <ArrowRight className="w-3 h-3" /></span>
             </div>
             
             <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group cursor-pointer">
@@ -73,7 +72,6 @@ export function HelpCenterPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Core HR & Employees</h3>
               <p className="text-slate-600 mb-4 text-sm">Managing profiles, setting up time-off policies, and org charts.</p>
-              <span className="text-blue-600 font-medium text-sm flex items-center gap-1">42 Articles <ArrowRight className="w-3 h-3" /></span>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group cursor-pointer">
@@ -82,7 +80,6 @@ export function HelpCenterPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Payroll & Taxes</h3>
               <p className="text-slate-600 mb-4 text-sm">Running payroll cycles, tax compliance, and managing contractors.</p>
-              <span className="text-blue-600 font-medium text-sm flex items-center gap-1">38 Articles <ArrowRight className="w-3 h-3" /></span>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group cursor-pointer">
@@ -91,7 +88,6 @@ export function HelpCenterPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Video Tutorials</h3>
               <p className="text-slate-600 mb-4 text-sm">Step-by-step video walkthroughs of common TalentOps features.</p>
-              <span className="text-blue-600 font-medium text-sm flex items-center gap-1">15 Videos <ArrowRight className="w-3 h-3" /></span>
             </div>
             
             <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group cursor-pointer">
@@ -100,7 +96,6 @@ export function HelpCenterPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Security & Permissions</h3>
               <p className="text-slate-600 mb-4 text-sm">RBAC setup, SSO integration, and data privacy compliance.</p>
-              <span className="text-blue-600 font-medium text-sm flex items-center gap-1">12 Articles <ArrowRight className="w-3 h-3" /></span>
             </div>
             
             <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group cursor-pointer">
@@ -109,7 +104,6 @@ export function HelpCenterPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">API & Integrations</h3>
               <p className="text-slate-600 mb-4 text-sm">Webhooks, OpenAPI specs, and connecting to third-party tools.</p>
-              <span className="text-blue-600 font-medium text-sm flex items-center gap-1">Developer Docs <ArrowRight className="w-3 h-3" /></span>
             </div>
           </div>
         </div>

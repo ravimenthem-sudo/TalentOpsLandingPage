@@ -9,11 +9,11 @@ export function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased">
       <Navbar />
-      
+
       {/* Hero Section */}
       <main className="flex-1 pt-32 pb-20 lg:pt-40 lg:pb-28 bg-slate-900 overflow-hidden relative">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-500 blur-[120px] opacity-20"></div>
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 font-semibold text-sm mb-8">
             Customer Success Stories
@@ -42,19 +42,8 @@ export function CaseStudiesPage() {
                 <p className="text-slate-600 mb-8 leading-relaxed">
                   "Before TalentOps, our onboarding was a mess of Google Docs and endless email threads. Now, a new hire is completely set up in exactly 3 minutes. It's completely changed how our HR team operates."
                 </p>
-                <div className="grid grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <p className="text-3xl font-extrabold text-emerald-600 mb-1">98%</p>
-                    <p className="text-sm font-medium text-slate-500">Faster Onboarding</p>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-extrabold text-emerald-600 mb-1">20hrs</p>
-                    <p className="text-sm font-medium text-slate-500">Saved on Payroll/week</p>
-                  </div>
-                </div>
-                <Link to="#" className="inline-flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition-colors">
-                  Read Full Case Study <ArrowUpRight className="w-5 h-5" />
-                </Link>
+
+
               </div>
             </div>
           </div>
@@ -72,7 +61,7 @@ export function CaseStudiesPage() {
               <Button variant="outline" className="rounded-full">Retail</Button>
             </div>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Case Study 1 */}
             <div className="bg-white p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition-shadow group">
@@ -140,7 +129,7 @@ export function CaseStudiesPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-slate-900 text-center">
+      <section className="py-24 mb-2 bg-slate-900 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
             Ready to write your own success story?
@@ -153,7 +142,7 @@ export function CaseStudiesPage() {
           </Button>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

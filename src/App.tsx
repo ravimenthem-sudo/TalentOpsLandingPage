@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { NewLandingPage } from './landing/NewLandingPage';
 import { CoreHRPage } from './pages/CoreHRPage'; // imported
 import { PayrollPage } from './pages/PayrollPage'; // imported
@@ -19,9 +19,20 @@ import { AboutPage } from './pages/AboutPage';
 import { LoginPage } from './pages/LoginPage';
 import './index.css';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<NewLandingPage />} />
         <Route path="/core-hr" element={<CoreHRPage />} />

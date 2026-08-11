@@ -10,7 +10,7 @@ import { HiringAgencySection } from "@/components/sections/HiringAgencySection";
 import { WhyTalentOpsSection } from "@/components/sections/WhyTalentOpsSection";
 import { ResourcesSection } from "@/components/sections/ResourcesSection";
 import { AboutSection } from "@/components/sections/AboutSection";
-import { SecurityTrustSection } from "@/components/sections/SecurityTrustSection";
+
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { BookDemoModal } from "@/components/ui/BookDemoModal";
@@ -35,7 +35,7 @@ export function NewLandingPage() {
         <ResourcesSection />
         <AboutSection />
         <WhyTalentOpsSection />
-        <SecurityTrustSection />
+
         <FAQSection />
         <FinalCTASection onBookDemo={openDemoModal} />
       </main>

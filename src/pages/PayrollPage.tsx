@@ -9,12 +9,12 @@ export function PayrollPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased">
       <Navbar />
-      
+
       {/* Hero Section */}
       <main className="flex-1 pt-32 pb-20 lg:pt-40 lg:pb-28 bg-slate-50 border-b border-slate-200 overflow-hidden relative">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-100 blur-3xl opacity-50"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-teal-100 blur-3xl opacity-50"></div>
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold text-sm mb-8">
             <span className="flex h-2 w-2 rounded-full bg-emerald-600"></span>
@@ -59,7 +59,7 @@ export function PayrollPage() {
                 Sync automatically with timesheets, time off, and salary adjustments. Run payroll for your entire organization with a single click.
               </p>
             </div>
-            
+
             <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-shadow shadow-sm group">
               <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                 <ShieldCheck className="w-7 h-7" />
@@ -69,7 +69,7 @@ export function PayrollPage() {
                 Automatic calculation of federal, state, and local taxes. We stay up-to-date with changing tax laws so you stay compliant automatically.
               </p>
             </div>
-            
+
             <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-shadow shadow-sm group">
               <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                 <CreditCard className="w-7 h-7" />
@@ -114,7 +114,7 @@ export function PayrollPage() {
       </section>
 
       {/* Deep Dive: Seamless Data Flow */}
-      <section className="py-24 bg-slate-900 text-white overflow-hidden">
+      <section className="py-24 mb-2 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="w-full lg:w-1/2 relative">
@@ -129,7 +129,7 @@ export function PayrollPage() {
                     Ready for Approval
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-4 rounded-xl bg-slate-700/50">
                     <span className="text-slate-300">Gross Pay (42 Employees)</span>
@@ -144,7 +144,7 @@ export function PayrollPage() {
                     <span className="font-semibold text-rose-400">-$2,500.00</span>
                   </div>
                 </div>
-                
+
                 <Button className="w-full mt-8 bg-emerald-500 hover:bg-emerald-600 text-white border-0">
                   Approve & Process
                 </Button>
@@ -158,7 +158,7 @@ export function PayrollPage() {
               <p className="text-lg text-slate-300 mb-8 leading-relaxed">
                 Because TalentOps handles Core HR and Time Tracking in the same system, your payroll is always perfectly synced. When someone takes unpaid leave, gets a bonus, or clocks overtime, payroll knows instantly.
               </p>
-              
+
               <ul className="space-y-4 mb-8">
                 {[
                   "Prorated calculations for new joiners and departures.",
@@ -178,7 +178,7 @@ export function PayrollPage() {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

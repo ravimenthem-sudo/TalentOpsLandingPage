@@ -43,8 +43,8 @@ export function HiringAgencySection() {
         
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-semibold tracking-wide text-indigo-200 bg-indigo-900/50 rounded-full border border-indigo-800">
-              <Briefcase className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 mb-6 text-base font-bold tracking-wide text-indigo-200 bg-indigo-900/50 rounded-full border border-indigo-800">
+              <Briefcase className="w-5 h-5" />
               TALENTOPS HIRING AGENCY
             </div>
             
@@ -55,16 +55,10 @@ export function HiringAgencySection() {
             
             <div className="space-y-6 text-lg text-indigo-100 mb-10 leading-relaxed">
               <p>
-                Software alone can't fix a talent shortage. Building a high-performing organization requires 
-                getting the right people in the door first. That is why the TalentOps Hiring Agency exists.
-              </p>
-              <p>
-                We act as your dedicated internal recruitment team. Our industry-expert recruiters actively hunt, 
-                source, and rigorously vet top-tier passive talent that you won't find on standard job boards. 
-                We handle the entire end-to-end recruitment lifecycle so you don't have to waste hours reviewing unqualified resumes.
+                Software alone isn't enough. We act as your dedicated internal recruitment team, hunting and vetting top-tier talent you won't find on standard job boards.
               </p>
               <p className="p-4 bg-indigo-900/50 border border-indigo-800 rounded-xl">
-                Once the offer is signed, the magic happens: Your new hire is instantly pushed into your TalentOps platform. 
+                Once an offer is signed, your new hire is instantly synced into your TalentOps platform. 
                 <strong className="text-white block mt-2">Source with our Agency. Manage with our Platform.</strong>
               </p>
             </div>

@@ -1,115 +1,81 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen, FileText, LifeBuoy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 export function ResourcesSection() {
-  const featured = [
+  const resources = [
     {
-      badge: "Masterclass Guide",
-      badgeColor: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
-      title: "The Ultimate Global Payroll & Compliance Playbook",
-      desc: "Navigating international labor laws shouldn't require a law degree. This exhaustive 50-page guide breaks down multi-country tax regulations, automated statutory deductions, and cross-border payment structures. Learn how hyper-growth startups use TalentOps to confidently hire and pay teams in 150+ countries without fearing compliance audits.",
-      linkText: "Read the playbook",
-      linkUrl: "/resources/playbook"
+      title: "Blog & Articles",
+      desc: "Read the latest insights on HR trends, payroll compliance, and talent management.",
+      linkText: "Explore Blog & Articles",
+      icon: <BookOpen className="w-6 h-6 text-blue-600" />,
+      iconBg: "bg-blue-50",
+      borderClass: "hover:border-blue-200",
+      linkUrl: "/blog"
     },
     {
-      badge: "Industry Whitepaper",
-      badgeColor: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-      title: "AI-Driven Talent Acquisition: Eliminating Bias & Scaling Speed",
-      desc: "Traditional ATS systems are dead. Discover how modern organizations are leveraging machine learning to parse thousands of resumes instantly, predict candidate success rates, and automate interview scheduling. This whitepaper reveals the exact AI workflows that reduce time-to-hire by 65% while actively improving diversity and inclusion metrics.",
-      linkText: "Download whitepaper",
-      linkUrl: "/resources/blueprint"
+      title: "Case Studies",
+      desc: "See how fast-growing companies use TalentOps to scale their workforce.",
+      linkText: "Explore Case Studies",
+      icon: <FileText className="w-6 h-6 text-indigo-600" />,
+      iconBg: "bg-indigo-50",
+      borderClass: "hover:border-indigo-200",
+      linkUrl: "/case-studies"
     },
     {
-      badge: "Toolkit",
-      badgeColor: "bg-amber-500/10 text-amber-500 border border-amber-500/20",
-      title: "The 90-Day Retention Framework (with Templates)",
-      desc: "30% of new hires leave within the first 90 days due to poor onboarding. Stop losing your best talent. This comprehensive toolkit includes attorney-reviewed 30-60-90 day goal-setting templates, automated check-in survey questions, and psychological frameworks designed to integrate new employees deeply into your company culture from day one.",
-      linkText: "Get the toolkit",
-      linkUrl: "/resources/tour"
-    }
-  ];
-
-  const categories = [
-    {
-      title: "Executive Insights & Whitepapers",
-      desc: "Deeply researched, data-backed industry reports on the future of work. Understand macroeconomic shifts in remote hiring, compensation benchmarking across top-tier cities, and the financial impact of modern HR automation on your bottom line."
-    },
-    {
-      title: "Attorney-Approved Legal Templates",
-      desc: "Stop paying expensive retainer fees for basic HR paperwork. Access our constantly updated library of plug-and-play offer letters, compliant termination agreements, remote-work tax policies, and GDPR-compliant data processing agreements."
-    },
-    {
-      title: "Technical Integration Documentation",
-      desc: "Your HR platform shouldn't be a data silo. Explore our comprehensive REST API references, Webhook payload structures, and step-by-step guides for securely syncing TalentOps data with Slack, Google Workspace, Azure AD, and your proprietary internal tools."
-    },
-    {
-      title: "On-Demand Webinars & Masterclasses",
-      desc: "Watch exclusive video sessions with industry-leading Chief People Officers and Talent Acquisition Directors. Learn tactical strategies for structuring performance reviews, conducting compensation cycles, and navigating complex employee relations issues."
+      title: "Help Center",
+      desc: "Explore guides, tutorials, and documentation to get the most out of TalentOps.",
+      linkText: "Explore Help Center",
+      icon: <LifeBuoy className="w-6 h-6 text-emerald-600" />,
+      iconBg: "bg-emerald-50",
+      borderClass: "hover:border-emerald-200",
+      linkUrl: "/help-center"
     }
   ];
 
   return (
-    <section id="resources" className="py-24 bg-[#0B1121] text-slate-300 border-t border-slate-800">
+    <section id="resources" className="py-24 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
-
+        
         {/* Header Section */}
-        <div className="mb-12 max-w-3xl">
-          <div className="inline-block px-3 py-1 mb-6 text-[10px] font-bold tracking-wider uppercase bg-[#172554] text-blue-400 rounded-full border border-blue-900/50">
-            Resources Hub
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            Insights to elevate your workforce strategy
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Learn and Grow with TalentOps
           </h2>
-          <p className="text-lg text-slate-300 leading-relaxed">
-            Practical guides, HR templates, implementation playbooks, compliance checklists, and product documentation for founders, HR teams, and growing organizations.
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Everything you need to master your workforce operations, from strategic insights to step-by-step guides.
           </p>
         </div>
 
-        {/* Featured Resources (Top 3 Cards) */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {featured.map((item, idx) => (
-            <div
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {resources.map((resource, idx) => (
+            <Link 
               key={idx}
-              className="bg-[#0B1121] border border-slate-700/80 rounded-2xl p-6 flex flex-col hover:border-slate-500 transition-colors"
+              to={resource.linkUrl}
+              className={cn(
+                "flex flex-col p-8 rounded-[24px] border border-slate-100 bg-white shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer no-underline",
+                resource.borderClass
+              )}
             >
-              <div className="mb-4">
-                <span className={cn("text-[11px] font-bold px-2 py-1 rounded-md", item.badgeColor)}>
-                  {item.badge}
-                </span>
+              <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors", resource.iconBg)}>
+                {resource.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
-                {item.title}
+              
+              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-primary-700 transition-colors">
+                {resource.title}
               </h3>
-              <p className="text-[15px] leading-relaxed text-slate-300 flex-1">
-                {item.desc}
+              
+              <p className="text-[15px] text-slate-600 leading-relaxed flex-1 mb-8">
+                {resource.desc}
               </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Divider */}
-        <div className="w-full h-px bg-slate-800/80 mb-12"></div>
-
-        {/* Browse by category */}
-        <div>
-          <h2 className="text-xl font-bold text-white mb-6">Browse by category</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {categories.map((category, idx) => (
-              <div
-                key={idx}
-                className="bg-[#0B1121] border border-slate-700/80 rounded-2xl p-6 hover:border-slate-500 transition-colors cursor-pointer group"
-              >
-                <h3 className="text-base font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                  {category.title}
-                </h3>
-                <p className="text-[14px] leading-relaxed text-slate-300">
-                  {category.desc}
-                </p>
+              
+              <div className="flex items-center gap-2 text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                {resource.linkText} <ArrowRight className="w-4 h-4" />
               </div>
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
 
       </div>

@@ -8,7 +8,7 @@ export function SolutionsSection() {
       icon: <Clock className="w-8 h-8 text-rose-500" />,
       title: "Eliminate 80% of Manual HR Administration",
       subtitle: "Stop wasting hours on data entry and email chains.",
-      details: "Our automation engine handles repetitive tasks like leave approvals, attendance tracking, and onboarding document collection. When an employee updates their bank details, it instantly synchronizes across payroll, benefits, and core HR records without human intervention.",
+      details: "Automate repetitive tasks like leave approvals and data entry. Employee updates instantly sync across payroll, benefits, and core HR.",
       color: "rose",
       metrics: ["Save 15+ hours per week on admin tasks", "Zero manual data entry errors"]
     },
@@ -16,7 +16,7 @@ export function SolutionsSection() {
       icon: <Users className="w-8 h-8 text-indigo-500" />,
       title: "Unify the Entire Employee Journey",
       subtitle: "Connect fragmented systems into one seamless experience.",
-      details: "When you hire a candidate in TalentOps, their data flows directly into an automated onboarding sequence, provisions their software accounts, and sets up their payroll profile. No more manual CSV exports between your ATS, HRIS, and Payroll provider.",
+      details: "Candidate data flows directly into automated onboarding, provisioning software and payroll. Eliminate manual CSV exports between disconnected tools.",
       color: "indigo",
       metrics: ["Reduce onboarding time by 60%", "100% data consistency across tools"]
     },
@@ -24,7 +24,7 @@ export function SolutionsSection() {
       icon: <TrendingUp className="w-8 h-8 text-emerald-500" />,
       title: "Drive High Performance & Accountability",
       subtitle: "Align daily work with top-level business objectives.",
-      details: "Go beyond annual reviews. TalentOps offers continuous 360-degree feedback, automated OKR tracking, and 1-on-1 meeting templates. Managers get real-time dashboards identifying flight risks and top performers, enabling proactive leadership.",
+      details: "Go beyond annual reviews with continuous 360-degree feedback and OKR tracking. Proactively lead with real-time dashboards on top performers.",
       color: "emerald",
       metrics: ["Increase employee engagement by 40%", "Real-time visibility into workforce ROI"]
     },
@@ -32,7 +32,7 @@ export function SolutionsSection() {
       icon: <ShieldCheck className="w-8 h-8 text-sky-500" />,
       title: "Ensure Bulletproof Compliance & Security",
       subtitle: "Stay ahead of labor laws and secure your data.",
-      details: "With built-in compliance checks, automated audit trails, and granular role-based access control (RBAC), TalentOps ensures your company meets strict local labor regulations. SOC2-certified infrastructure keeps your sensitive payroll data locked down.",
+      details: "Meet strict labor regulations with built-in compliance checks and audit trails. Your sensitive data stays secure on SOC2-certified infrastructure.",
       color: "sky",
       metrics: ["100% audit-ready compliance records", "Bank-grade data encryption"]
     }
@@ -82,14 +82,6 @@ export function SolutionsSection() {
                 {item.details}
               </p>
 
-              <div className="space-y-3 pt-6 border-t border-slate-200">
-                {item.metrics.map((metric, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className={cn("w-5 h-5 shrink-0 mt-0.5", `text-${item.color}-500`)} />
-                    <span className="font-medium text-slate-700">{metric}</span>
-                  </div>
-                ))}
-              </div>
             </div>
           ))}
         </div>

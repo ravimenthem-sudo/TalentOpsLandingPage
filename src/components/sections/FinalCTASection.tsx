@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export function FinalCTASection({ onBookDemo }: { onBookDemo?: () => void }) {
   return (
-    <section className="py-24 bg-primary-600 relative overflow-hidden">
+    <section className="py-24 bg-primary-600 relative overflow-hidden border-b-8 border-white">
       
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">

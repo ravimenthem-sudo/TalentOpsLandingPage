@@ -9,13 +9,13 @@ export function CoreHRPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased">
       <Navbar />
-      
+
       {/* Hero Section */}
       <main className="flex-1 pt-32 pb-20 lg:pt-40 lg:pb-28 bg-slate-50 border-b border-slate-200 overflow-hidden relative">
         {/* Background decorations */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-primary-100 blur-3xl opacity-50"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-100 blur-3xl opacity-50"></div>
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-600 font-semibold text-sm mb-8">
             <span className="flex h-2 w-2 rounded-full bg-primary-600"></span>
@@ -61,7 +61,7 @@ export function CoreHRPage() {
                 A rich, searchable database of all employee profiles, personal details, contact info, and job history.
               </p>
             </div>
-            
+
             {/* Feature 2 */}
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow group">
               <div className="w-12 h-12 bg-white text-primary-600 rounded-xl flex items-center justify-center mb-6 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
@@ -72,7 +72,7 @@ export function CoreHRPage() {
                 Securely store contracts, NDAs, identification, and tax forms with role-based access control.
               </p>
             </div>
-            
+
             {/* Feature 3 */}
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow group">
               <div className="w-12 h-12 bg-white text-primary-600 rounded-xl flex items-center justify-center mb-6 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
@@ -145,15 +145,15 @@ export function CoreHRPage() {
       {/* Deep Dive: Self-Service */}
       <section className="py-24 bg-slate-50 border-t border-b border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2">
+          <div className="max-w-3xl mx-auto">
+            <div className="w-full">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
                 Empower Teams with Employee Self-Service
               </h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 Stop acting as the middleman for basic data updates. TalentOps gives every employee a secure portal to manage their own information, freeing up HR to focus on strategy.
               </p>
-              
+
               <ul className="space-y-4 mb-8">
                 {[
                   "Update personal details, address, and emergency contacts.",
@@ -169,54 +169,17 @@ export function CoreHRPage() {
                   </li>
                 ))}
               </ul>
-              
-              <Link to="/" className="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
-                Explore Employee Experience <ArrowRight className="w-4 h-4" />
-              </Link>
+
+
             </div>
-            
-            <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary-200 to-blue-100 rounded-3xl transform rotate-3 scale-105 opacity-50 blur-lg"></div>
-              <div className="relative bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-slate-50">
-                  <div className="w-3 h-3 rounded-full bg-rose-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-16 h-16 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
-                      <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile" className="w-full h-full object-cover" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-slate-900">Sarah Jenkins</h4>
-                      <p className="text-slate-500">Senior Product Designer</p>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                      <p className="text-sm text-slate-500 mb-1">Available PTO</p>
-                      <p className="text-2xl font-bold text-slate-900">14 Days</p>
-                    </div>
-                    <div className="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                      <p className="text-sm text-slate-500 mb-1">Next Holiday</p>
-                      <p className="text-xl font-bold text-slate-900">Thanksgiving</p>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full bg-primary-50 text-primary-700 hover:bg-primary-100 border-0 shadow-none">
-                    Request Time Off
-                  </Button>
-                </div>
-              </div>
-            </div>
+
+
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-primary-600 text-center relative overflow-hidden">
+      <section className="py-24 mb-2 bg-primary-600 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
@@ -232,7 +195,7 @@ export function CoreHRPage() {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

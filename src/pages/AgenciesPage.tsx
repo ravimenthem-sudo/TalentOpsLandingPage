@@ -114,7 +114,7 @@ export function AgenciesPage() {
       </section>
 
       {/* Deep Dive: Seamless Data Flow */}
-      <section className="py-24 bg-slate-900 text-white overflow-hidden">
+      <section className="py-24 mb-2 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="w-full lg:w-1/2 relative">
