@@ -3,7 +3,7 @@ import { ArrowRight, Users, Briefcase, DollarSign } from "lucide-react";
 
 export function HeroSection({ onBookDemo }: { onBookDemo?: () => void }) {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
+    <section id="hero-section" className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
 
       {/* Background Elements */}
       <div className="absolute top-0 inset-x-0 h-full overflow-hidden pointer-events-none">

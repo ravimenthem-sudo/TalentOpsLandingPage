@@ -1,7 +1,8 @@
-import React from "react";
-import { UserSearch, FileText, Users, CheckCircle, Handshake, Briefcase, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { UserSearch, FileText, Users, CheckCircle, Handshake, Briefcase, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 
 export function HiringAgencySection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const steps = [
     { 
       name: "1. Tell us who you need", 
@@ -85,11 +86,16 @@ export function HiringAgencySection() {
                       {step.icon}
                     </div>
                     
-                    <div>
-                      <div className={`font-bold text-lg mb-1 ${idx === steps.length - 1 ? 'text-white' : 'text-slate-200'}`}>
+                    <div className="flex-1 cursor-pointer select-none" onClick={() => setOpenIndex(openIndex === idx ? null : idx)}>
+                      <div className={`font-bold text-lg flex items-center justify-between transition-colors hover:text-indigo-300 ${idx === steps.length - 1 ? 'text-white' : 'text-slate-200'}`}>
                         {step.name}
+                        {openIndex === idx ? (
+                          <ChevronUp className="w-4 h-4 text-slate-500" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-slate-500" />
+                        )}
                       </div>
-                      <div className="text-sm text-slate-400 leading-relaxed pr-4">
+                      <div className={`text-sm text-slate-400 leading-relaxed pr-4 overflow-hidden transition-all duration-300 ${openIndex === idx ? 'max-h-40 mt-2 opacity-100' : 'max-h-0 opacity-0'}`}>
                         {step.desc}
                       </div>
                     </div>

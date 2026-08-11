@@ -116,51 +116,9 @@ export function MidMarketPage() {
       {/* Deep Dive: Seamless Data Flow */}
       <section className="py-24 mb-2 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500 to-blue-600 rounded-3xl transform rotate-3 scale-105 opacity-30 blur-xl"></div>
-              <div className="relative bg-slate-800 border border-slate-700 rounded-3xl shadow-2xl p-8">
-                
-                <h4 className="text-lg font-medium text-slate-300 mb-6">Custom Reporting Engine</h4>
-                
-                <div className="space-y-4">
-                  <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600/50">
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-white font-medium">Headcount Growth (YTD)</span>
-                      <span className="text-cyan-400 font-bold">+24%</span>
-                    </div>
-                    {/* Mock Chart lines */}
-                    <div className="flex items-end gap-2 h-24">
-                      <div className="w-full bg-cyan-500/20 h-[30%] rounded-t"></div>
-                      <div className="w-full bg-cyan-500/40 h-[45%] rounded-t"></div>
-                      <div className="w-full bg-cyan-500/60 h-[60%] rounded-t"></div>
-                      <div className="w-full bg-cyan-500/80 h-[85%] rounded-t"></div>
-                      <div className="w-full bg-cyan-500 h-[100%] rounded-t"></div>
-                    </div>
-                    <div className="flex justify-between text-xs text-slate-400 mt-2">
-                      <span>Q1</span>
-                      <span>Q2</span>
-                      <span>Q3</span>
-                      <span>Q4</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600/50">
-                      <p className="text-sm text-slate-400 mb-1">Voluntary Turnover</p>
-                      <p className="text-2xl font-bold text-white">4.2%</p>
-                    </div>
-                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600/50">
-                      <p className="text-sm text-slate-400 mb-1">Time to Hire</p>
-                      <p className="text-2xl font-bold text-white">18 Days</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+          <div className="max-w-5xl mx-auto">
+            <div className="w-full text-center">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 Insights to drive strategic decisions.
               </h2>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed">

@@ -34,7 +34,7 @@ export function Navbar({ onBookDemo }: { onBookDemo?: () => void }) {
   const navLinks = [
     { 
       name: "Solutions", 
-      href: "/#solutions",
+      href: "/#hero-section",
       hasDropdown: true,
       dropdownItems: [
         { name: "For Startups", href: "/startups" },
@@ -54,17 +54,9 @@ export function Navbar({ onBookDemo }: { onBookDemo?: () => void }) {
       ] 
     },
     { name: "TalentOps Hiring", hasDropdown: false, href: "/#talentops-hiring" },
-    { 
-      name: "Resources", 
-      href: "/#resources",
-      hasDropdown: true,
-      dropdownItems: [
-        { name: "Blog & Articles", href: "/blog" },
-        { name: "Case Studies", href: "/case-studies" },
-        { name: "Help Center", href: "/help-center" }
-      ] 
-    },
+
     { name: "About", hasDropdown: false, href: "/#about" },
+    { name: "Contact", hasDropdown: false, href: "/#contact" },
   ];
 
   const handleDropdownClick = (name: string, hasDropdown: boolean, href: string | undefined, e: React.MouseEvent) => {
@@ -136,8 +128,9 @@ export function Navbar({ onBookDemo }: { onBookDemo?: () => void }) {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-6">
-            <Link to="/login" className="flex items-center justify-center rounded-md bg-primary-600 hover:bg-primary-700 text-white font-medium text-lg px-8 h-12 shadow-sm transition-all whitespace-nowrap">Login</Link>
+          <div className="hidden lg:flex items-center gap-4">
+            <Link to="/login" className="flex items-center justify-center rounded-md bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 h-10 shadow-sm transition-all whitespace-nowrap">Login</Link>
+            <button onClick={onBookDemo} className="flex items-center justify-center rounded-md bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 h-10 shadow-sm transition-all whitespace-nowrap">Book a Demo</button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -184,6 +177,7 @@ export function Navbar({ onBookDemo }: { onBookDemo?: () => void }) {
         ))}
         <div className="flex flex-col gap-3 mt-4">
           <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="w-full flex justify-center items-center rounded-md bg-primary-600 hover:bg-primary-700 text-white font-medium h-12 shadow-sm transition-colors">Login</Link>
+          <button onClick={() => { setMobileMenuOpen(false); onBookDemo?.(); }} className="w-full flex justify-center items-center rounded-md bg-primary-600 hover:bg-primary-700 text-white font-medium h-12 shadow-sm transition-colors">Book a Demo</button>
         </div>
       </div>
     </header>

@@ -116,43 +116,9 @@ export function PayrollPage() {
       {/* Deep Dive: Seamless Data Flow */}
       <section className="py-24 mb-2 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-emerald-900 rounded-3xl transform -rotate-3 scale-105 opacity-30 blur-xl"></div>
-              <div className="relative bg-slate-800 border border-slate-700 rounded-3xl shadow-2xl p-8">
-                <div className="flex items-center justify-between mb-8 pb-6 border-b border-slate-700">
-                  <div>
-                    <h4 className="text-lg font-medium text-slate-300">September Payroll Run</h4>
-                    <p className="text-3xl font-bold text-white mt-1">$142,500.00</p>
-                  </div>
-                  <div className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-semibold border border-emerald-500/30">
-                    Ready for Approval
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center p-4 rounded-xl bg-slate-700/50">
-                    <span className="text-slate-300">Gross Pay (42 Employees)</span>
-                    <span className="font-semibold">$180,000.00</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 rounded-xl bg-slate-700/50">
-                    <span className="text-slate-300">Tax Deductions</span>
-                    <span className="font-semibold text-rose-400">-$35,000.00</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 rounded-xl bg-slate-700/50">
-                    <span className="text-slate-300">Benefits & Contributions</span>
-                    <span className="font-semibold text-rose-400">-$2,500.00</span>
-                  </div>
-                </div>
-
-                <Button className="w-full mt-8 bg-emerald-500 hover:bg-emerald-600 text-white border-0">
-                  Approve & Process
-                </Button>
-              </div>
-            </div>
-
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+          <div className="max-w-5xl mx-auto">
+            <div className="w-full text-center">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 No more double data entry.
               </h2>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed">

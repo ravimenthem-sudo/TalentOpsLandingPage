@@ -116,16 +116,16 @@ export function RecruitmentPage() {
       {/* Deep Dive: Seamless Onboarding */}
       <section className="py-24 mb-2 bg-indigo-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+          <div className="max-w-5xl mx-auto">
+            <div className="w-full text-center">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 From 'Candidate' to 'Employee' in One Click
               </h2>
               <p className="text-lg text-indigo-200 mb-8 leading-relaxed">
                 When a candidate accepts an offer, the real magic happens. TalentOps instantly converts their profile into a new employee record.
               </p>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
                 {[
                   "No duplicate data entry across ATS and HRIS.",
                   "Automatically trigger Day 1 onboarding task lists.",
@@ -140,52 +140,6 @@ export function RecruitmentPage() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-tl from-indigo-500 to-violet-900 rounded-3xl transform rotate-3 scale-105 opacity-40 blur-xl"></div>
-              <div className="relative bg-slate-800 border border-slate-700 rounded-3xl shadow-2xl p-8">
-
-                {/* Mock UI for Pipeline */}
-                <div className="flex gap-4">
-                  {/* Column 1 */}
-                  <div className="w-1/2 bg-slate-700/50 rounded-xl p-4 flex flex-col gap-3 border border-slate-600/50">
-                    <h5 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-2">Interviewing</h5>
-
-                    <div className="bg-slate-800 p-4 rounded-lg border border-slate-700 shadow-sm">
-                      <p className="font-semibold text-white">David Chen</p>
-                      <p className="text-xs text-indigo-300 mb-3">Product Manager</p>
-                      <div className="flex justify-between items-center text-xs text-slate-400">
-                        <span>3rd Round</span>
-                        <div className="flex gap-1">
-                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                          <Star className="w-3 h-3 text-amber-400" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Column 2 */}
-                  <div className="w-1/2 bg-slate-700/50 rounded-xl p-4 flex flex-col gap-3 border border-slate-600/50">
-                    <h5 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center justify-between">
-                      Offer Sent
-                      <span className="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded text-[10px]">1 accepted</span>
-                    </h5>
-
-                    <div className="bg-emerald-900/40 p-4 rounded-lg border border-emerald-500/30 shadow-sm relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/20 blur-xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
-                      <p className="font-semibold text-white">Elena Rodriguez</p>
-                      <p className="text-xs text-emerald-300 mb-3">Lead Engineer</p>
-                      <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white h-8 text-xs border-0 mt-2 shadow-lg shadow-emerald-500/20">
-                        Convert to Employee
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>

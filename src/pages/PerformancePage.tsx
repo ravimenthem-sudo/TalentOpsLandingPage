@@ -116,55 +116,16 @@ export function PerformancePage() {
       {/* Deep Dive: Connected to Compensation */}
       <section className="py-24 mb-2 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-rose-500 to-orange-500 rounded-3xl transform rotate-3 scale-105 opacity-30 blur-xl"></div>
-              <div className="relative bg-slate-800 border border-slate-700 rounded-3xl shadow-2xl p-8">
-
-                <h4 className="text-xl font-bold text-white mb-6">Q3 Performance Review</h4>
-
-                <div className="space-y-6">
-                  {/* Rating Block */}
-                  <div className="bg-slate-700/50 p-5 rounded-xl border border-slate-600/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-slate-300 font-medium">Overall Rating</span>
-                      <span className="text-rose-400 font-bold">Exceeds Expectations</span>
-                    </div>
-                    <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full bg-rose-500 w-4/5 rounded-full"></div>
-                    </div>
-                  </div>
-
-                  {/* Feedback Block */}
-                  <div className="bg-slate-700/50 p-5 rounded-xl border border-slate-600/50">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold">JD</div>
-                      <span className="text-slate-300 font-medium">Manager Feedback</span>
-                    </div>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      "Outstanding quarter. Not only did you hit all your OKRs, but you stepped up to mentor the two new junior developers. Highly recommend a comp review during the next cycle."
-                    </p>
-                  </div>
-
-                  {/* Suggestion Block */}
-                  <div className="flex items-center gap-3 text-sm text-slate-300 bg-slate-800 p-4 rounded-lg border border-slate-700">
-                    <Zap className="w-5 h-5 text-amber-400" />
-                    <span>Based on this rating, TalentOps suggests a <strong>15% bonus</strong> payout.</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+          <div className="max-w-5xl mx-auto">
+            <div className="w-full text-center">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 Tie Performance Directly to Compensation
               </h2>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed">
                 When performance review cycles end, compensation planning begins. TalentOps automatically links review scores and goal completions directly to payroll bonuses and salary band recommendations.
               </p>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
                 {[
                   "Data-driven salary adjustment suggestions.",
                   "Automated bonus calculations based on goal attainment.",

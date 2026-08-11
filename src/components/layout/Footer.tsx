@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300 py-20 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center shadow-sm">
@@ -37,7 +37,6 @@ export function Footer() {
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Payroll & Compensation</a></li>
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Workforce Operations</a></li>
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Performance</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Reports & Analytics</a></li>
             </ul>
           </div>
           
@@ -55,9 +54,20 @@ export function Footer() {
             <h4 className="text-white font-semibold mb-6">Company & Support</h4>
             <ul className="flex flex-col gap-3">
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">About Us</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Contact Sales</a></li>
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Help Center & FAQs</a></li>
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">System Status</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-6">Contact Us</h4>
+            <ul className="flex flex-col gap-3">
+              <li className="text-slate-400 text-sm leading-relaxed">
+                Ottobon Academy<br />
+                A square business center,<br />
+                Waltair Main Rd, next to lifestyle stores,<br />
+                Suite: 102, Ram Nagar, Visakhapatnam
+              </li>
             </ul>
           </div>
         </div>

@@ -133,12 +133,7 @@ export function TalentLifecycleSection() {
 
             <div className="relative z-10 grid md:grid-cols-2 gap-10 items-center">
               <div>
-                <div className={cn(
-                  "inline-flex items-center gap-2 px-3 py-1.5 mb-6 text-sm font-bold uppercase tracking-wider rounded-lg border",
-                  `bg-${activeData.color}-500/10 text-${activeData.color}-400 border-${activeData.color}-500/20`
-                )}>
-                  Stage {activeStep + 1} of 7
-                </div>
+
                 <h3 className="text-3xl font-extrabold text-white mb-4">
                   {activeData.title}
                 </h3>

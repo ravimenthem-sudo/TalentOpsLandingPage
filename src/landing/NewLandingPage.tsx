@@ -12,6 +12,7 @@ import { ResourcesSection } from "@/components/sections/ResourcesSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 
 import { FAQSection } from "@/components/sections/FAQSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { BookDemoModal } from "@/components/ui/BookDemoModal";
 
@@ -32,10 +33,9 @@ export function NewLandingPage() {
         <TalentLifecycleSection />
         <ProductOverviewSection />
         <HiringAgencySection />
-        <ResourcesSection />
         <AboutSection />
         <WhyTalentOpsSection />
-
+        <ContactSection />
         <FAQSection />
         <FinalCTASection onBookDemo={openDemoModal} />
       </main>

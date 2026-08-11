@@ -55,11 +55,12 @@ export function ResourcesSection() {
               key={idx}
               to={resource.linkUrl}
               className={cn(
-                "flex flex-col p-8 rounded-[24px] border border-slate-100 bg-white shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer no-underline",
+                "flex flex-col p-8 rounded-[24px] border border-white/50 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer no-underline",
+                resource.iconBg,
                 resource.borderClass
               )}
             >
-              <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors", resource.iconBg)}>
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors bg-white shadow-sm">
                 {resource.icon}
               </div>
               

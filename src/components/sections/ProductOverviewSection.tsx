@@ -106,25 +106,6 @@ export function ProductOverviewSection() {
           { name: "Career Pathing", icon: <LineChart className="w-5 h-5 text-orange-500" /> }
         ]
       }
-    },
-    {
-      id: "analytics",
-      title: "Reports & Analytics",
-      shortDesc: "Data-driven HR decisions.",
-      icon: <PieChart className="w-5 h-5" />,
-      colorClass: "text-rose-600 bg-rose-50 border-rose-200",
-      activeBg: "bg-rose-600 text-white",
-      details: {
-        heading: "Unlock insights hidden in your data",
-        description: "Visualize workforce trends, predict turnover, and track diversity metrics. Turn complex HR data into actionable board-ready dashboards.",
-        link: "/solutions",
-        features: [
-          { name: "Custom Dashboards", icon: <LayoutDashboard className="w-5 h-5 text-rose-500" /> },
-          { name: "Predictive AI", icon: <BrainCircuit className="w-5 h-5 text-rose-500" /> },
-          { name: "Exportable Reports", icon: <FileText className="w-5 h-5 text-rose-500" /> },
-          { name: "Trend Analysis", icon: <BarChart3 className="w-5 h-5 text-rose-500" /> }
-        ]
-      }
     }
   ];
 

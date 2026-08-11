@@ -116,56 +116,9 @@ export function AgenciesPage() {
       {/* Deep Dive: Seamless Data Flow */}
       <section className="py-24 mb-2 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500 to-fuchsia-600 rounded-3xl transform rotate-3 scale-105 opacity-30 blur-xl"></div>
-              <div className="relative bg-slate-800 border border-slate-700 rounded-3xl shadow-2xl p-8">
-                
-                <h4 className="text-lg font-medium text-slate-300 mb-6">Contractor Invoice Flow</h4>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-slate-700/50">
-                    <div>
-                      <p className="font-semibold text-white">Alex Morgan (Freelance Designer)</p>
-                      <p className="text-sm text-slate-400">Acme Corp Rebranding</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold text-purple-400">40 hrs</p>
-                      <p className="text-xs text-slate-500">Logged this week</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-center text-slate-500">
-                    <ArrowRight className="w-5 h-5 rotate-90 my-1" />
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-slate-700/50 border border-emerald-500/30">
-                    <div>
-                      <p className="font-semibold text-white">Client Approval</p>
-                      <p className="text-sm text-emerald-400">Approved by Jane Doe</p>
-                    </div>
-                    <div className="text-right text-emerald-400">
-                      <CheckCircle className="w-6 h-6 inline" />
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-center text-slate-500">
-                    <ArrowRight className="w-5 h-5 rotate-90 my-1" />
-                  </div>
-                  
-                  <div className="p-4 rounded-xl bg-purple-900/40 border border-purple-500/30">
-                    <p className="font-semibold text-white mb-2">Automated Actions</p>
-                    <ul className="text-sm text-purple-200 space-y-1">
-                      <li>• Contractor Payroll Run Scheduled</li>
-                      <li>• Client Invoice Generated (QuickBooks)</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+          <div className="max-w-5xl mx-auto">
+            <div className="w-full text-center">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 Connect time tracking directly to billing.
               </h2>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed">
