@@ -1,33 +1,32 @@
-"use client";
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-export function FinalCTASection() {
+export function FinalCTASection({ onBookDemo }: { onBookDemo?: () => void }) {
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden flex flex-col justify-center px-6 lg:px-8">
-      {/* Decorative Blob */}
-      <div className="absolute top-1/2 -right-[20%] md:-right-[10%] lg:-right-40 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full opacity-80 blur-2xl -translate-y-1/2 pointer-events-none" />
+    <section className="py-24 bg-primary-600 relative overflow-hidden">
       
-      <div className="max-w-7xl mx-auto w-full relative z-10 grid md:grid-cols-2">
-        <div className="flex flex-col items-start text-left">
-          <h2 className="text-5xl md:text-[4rem] lg:text-[4.5rem] font-display font-bold text-[#111827] mb-6 leading-[1.05] tracking-tight">
-            Ready to <br />
-            Transform <br />
-            Your <span className="text-[#3b82f6]">Workforce</span> <br />
-            Operations?
-          </h2>
-          <p className="text-slate-600 text-lg md:text-xl mb-10 max-w-md leading-relaxed font-medium">
-            Join thousands of companies using TalentOps to build a more efficient, engaged, and productive workforce.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-4 w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto h-14 px-8 text-[15px] font-bold rounded-xl bg-[#3b82f6] hover:bg-blue-600 text-white transition-all whitespace-nowrap shadow-md">
-              Book a Demo <ArrowRight strokeWidth={2} className="ml-2 w-4 h-4 shrink-0" />
-            </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto h-14 px-8 text-[15px] font-bold rounded-xl bg-white text-[#3b82f6] border border-[#3b82f6] hover:bg-blue-50 transition-all whitespace-nowrap">
-              Start Free Trial
-            </Button>
-          </div>
+      {/* Background decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[150%] bg-white opacity-5 transform rotate-12"></div>
+        <div className="absolute bottom-[-20%] left-[-10%] w-[30%] h-[100%] bg-white opacity-5 transform -rotate-12"></div>
+      </div>
+      
+      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+          Ready to operate your talent?
+        </h2>
+        <p className="text-xl text-primary-100 mb-10 leading-relaxed font-medium">
+          Join growing organizations that have connected their workforce from hiring to high performance.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button 
+            onClick={onBookDemo}
+            className="h-14 px-10 text-lg font-bold rounded-md bg-white text-primary-700 hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center gap-2 group w-full sm:w-auto"
+          >
+            Book a Demo
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </div>
     </section>

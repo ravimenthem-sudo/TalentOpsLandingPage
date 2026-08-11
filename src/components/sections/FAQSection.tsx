@@ -1,94 +1,82 @@
-"use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export function FAQSection() {
   const faqs = [
     {
-      question: "Who is TalentOps for?",
-      answer: "TalentOps is designed for startups, SMEs, enterprises, and growing organizations that want to modernize workforce operations."
+      question: "What exactly does TalentOps do?",
+      answer: "TalentOps is a comprehensive workforce platform that manages your entire employee lifecycle. It connects recruitment, onboarding, core HR data, attendance, payroll, and performance into one single system."
     },
     {
-      question: "How does TalentOps improve HR operations?",
-      answer: "It centralizes employee management, automates routine HR workflows, and provides real-time workforce insights."
+      question: "Who is TalentOps for?",
+      answer: "TalentOps is built for growing professional-service organizations, including startups, agencies, consulting firms, and mid-sized businesses that need structured people operations without the enterprise complexity."
+    },
+    {
+      question: "How does the Hiring Agency service work?",
+      answer: "Unlike traditional HR software, we don't just give you an ATS. If you need talent, our in-house Hiring Agency will source, screen, and help you interview candidates. Once hired, they immediately flow into your TalentOps platform."
     },
     {
       question: "Can employees access their own information?",
-      answer: "Yes. Employees have secure self-service access to attendance, leave, payroll, documents, policies, and personal information."
+      answer: "Yes. Employees get a self-service portal where they can manage their profiles, request leaves, view payslips, and track their performance goals autonomously."
     },
     {
-      question: "Is TalentOps secure?",
-      answer: "Yes. The platform uses enterprise-grade security, encrypted data storage, role-based access control, and cloud infrastructure."
-    },
-    {
-      question: "Can the platform scale as our company grows?",
-      answer: "Absolutely. TalentOps is built to support organizations from small teams to large enterprise workforces."
+      question: "Is TalentOps secure and compliant?",
+      answer: "Absolutely. We employ role-based access control, secure authentication, and strict data privacy measures to ensure your organization's sensitive workforce data is protected at all times."
     }
   ];
 
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-blue-950 border-b-[16px] border-white">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16 flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-blue-500 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-blue-100">
-              Everything you need to know about the product and billing.
-            </p>
-          </motion.div>
+    <section className="py-24 bg-slate-50 border-t border-slate-100">
+      <div className="max-w-4xl mx-auto px-6">
+        
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-slate-600 font-medium">
+            Everything you need to know about the product and our agency services.
+          </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-lg shadow-blue-900/20 hover:shadow-xl transition-shadow"
+              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                openIndex === i ? "bg-white shadow-md border-primary-200" : "bg-white border-slate-200 hover:border-primary-300"
+              }`}
             >
               <button
-                suppressHydrationWarning
-                className="w-full px-6 py-6 text-left flex items-center justify-between focus:outline-none"
+                className="w-full px-6 py-6 text-left flex items-center justify-between focus:outline-none group"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
-                <span className={`font-semibold text-lg pr-8 transition-colors ${openIndex === i ? 'text-blue-600' : 'text-slate-900'}`}>{faq.question}</span>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${openIndex === i ? 'bg-blue-50 text-blue-600' : 'bg-slate-50 text-slate-400'}`}>
-                  <ChevronDown className={cn(
-                    "w-5 h-5 transition-transform duration-300",
-                    openIndex === i && "rotate-180"
-                  )} />
+                <span className="font-semibold text-lg pr-8 text-slate-900 transition-colors">
+                  {faq.question}
+                </span>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all flex-shrink-0 ${
+                  openIndex === i 
+                    ? 'bg-primary-100 text-primary-600' 
+                    : 'bg-slate-100 text-slate-500 group-hover:bg-primary-50 group-hover:text-primary-500'
+                }`}>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`} />
                 </div>
               </button>
-              <AnimatePresence>
-                {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-6 pb-6 text-slate-600 leading-relaxed pt-2">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              
+              <div 
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openIndex === i ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="px-6 pb-6 text-slate-600 leading-relaxed pt-0 border-t border-slate-50 mt-2">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
+        
       </div>
     </section>
   );

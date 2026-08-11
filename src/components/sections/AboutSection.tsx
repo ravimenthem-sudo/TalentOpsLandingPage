@@ -4,7 +4,7 @@ import { Users, GitMerge, Clock, LineChart, ShieldCheck, Smartphone, CheckCircle
 
 export function AboutSection() {
   return (
-    <section id="solutions" className="py-24 bg-white overflow-hidden relative">
+    <section id="about" className="py-24 bg-white overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Main Content Split */}

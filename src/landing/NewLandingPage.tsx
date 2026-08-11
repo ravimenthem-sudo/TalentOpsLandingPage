@@ -1,34 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { TrustedCompaniesSection } from "@/components/sections/TrustedCompaniesSection";
-import { AboutSection } from "@/components/sections/AboutSection";
+import { SolutionsSection } from "@/components/sections/SolutionsSection";
+import { TheProblemSection } from "@/components/sections/TheProblemSection";
+import { TalentLifecycleSection } from "@/components/sections/TalentLifecycleSection";
+import { ProductOverviewSection } from "@/components/sections/ProductOverviewSection";
+import { HiringAgencySection } from "@/components/sections/HiringAgencySection";
 import { WhyTalentOpsSection } from "@/components/sections/WhyTalentOpsSection";
-import { DashboardShowcaseSection } from "@/components/sections/DashboardShowcaseSection";
-import { RoleBasedBenefitsSection } from "@/components/sections/RoleBasedBenefitsSection";
-import { AiAutomationSection } from "@/components/sections/AiAutomationSection";
-import { ContactSalesSection } from "@/components/sections/ContactSalesSection";
-import { ActionableInsightsSection } from "@/components/sections/ActionableInsightsSection";
+import { ResourcesSection } from "@/components/sections/ResourcesSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { SecurityTrustSection } from "@/components/sections/SecurityTrustSection";
 import { FAQSection } from "@/components/sections/FAQSection";
-import { VisionSection } from "@/components/sections/VisionSection";
+import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import { BookDemoModal } from "@/components/ui/BookDemoModal";
 
 export function NewLandingPage() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
+  const openDemoModal = () => setIsDemoModalOpen(true);
+  const closeDemoModal = () => setIsDemoModalOpen(false);
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden">
-      <Navbar />
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-primary-500 selection:text-white overflow-x-hidden">
+      <Navbar onBookDemo={openDemoModal} />
+      
       <main className="flex-1">
-        <HeroSection />
+        <HeroSection onBookDemo={openDemoModal} />
+        <SolutionsSection />
+        {/* <TheProblemSection /> */}
+        <TalentLifecycleSection />
+        <ProductOverviewSection />
+        <HiringAgencySection />
+        <ResourcesSection />
         <AboutSection />
         <WhyTalentOpsSection />
-        <RoleBasedBenefitsSection />
-        <AiAutomationSection />
-        <ActionableInsightsSection />
-        <ContactSalesSection />
+        <SecurityTrustSection />
         <FAQSection />
-        <VisionSection />
+        <FinalCTASection onBookDemo={openDemoModal} />
       </main>
+      
       <Footer />
+      
+      <BookDemoModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
     </div>
   );
 }

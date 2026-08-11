@@ -13,9 +13,10 @@ export function Footer() {
               </div>
               <span className="font-display font-bold text-2xl text-white tracking-tight">TalentOps</span>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed mb-8 text-slate-400">
-              One Intelligent Platform to Manage, Engage, and Grow Your Workforce. Built for modern organizations.
+            <p className="max-w-sm text-sm leading-relaxed mb-6 text-slate-400">
+              TalentOps operates the talents of your organization — from hiring to everyday employee operations and growth.
             </p>
+
             <div className="flex items-center gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:text-white transition-all text-slate-400">
                 <Twitter className="w-5 h-5" />
@@ -30,33 +31,33 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-white font-semibold mb-6">Company</h4>
-            <ul className="flex flex-col gap-3">
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">About</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Careers</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Contact</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Partners</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-semibold mb-6">Platform</h4>
+            <h4 className="text-white font-semibold mb-6">Product</h4>
             <ul className="flex flex-col gap-3">
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Employee Management</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Payroll</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Attendance</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Payroll & Compensation</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Workforce Operations</a></li>
               <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Performance</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Analytics</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Reports & Analytics</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-white font-semibold mb-6">Resources</h4>
+            <h4 className="text-white font-semibold mb-6">Solutions & Hiring</h4>
             <ul className="flex flex-col gap-3">
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Blog</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Documentation</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">FAQs</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Support</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">For Startups</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">For Mid-Sized Businesses</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">For Professional Services</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">TalentOps Hiring Agency</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-6">Company & Support</h4>
+            <ul className="flex flex-col gap-3">
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">About Us</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Contact Sales</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">Help Center & FAQs</a></li>
+              <li><a href="#" className="hover:text-primary-400 transition-all text-sm">System Status</a></li>
             </ul>
           </div>
         </div>
