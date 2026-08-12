@@ -1,170 +1,255 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, ChevronRight, Loader2, Building2, Mail, User, Phone } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+const LOOKING_FOR_OPTIONS = [
+  'HR Management',
+  'Payroll',
+  'Recruitment',
+  'Workforce Management',
+  'TalentOps Hiring Agency',
+  'Other',
+];
+
+const COMPANY_SIZE_OPTIONS = [
+  '1 – 10',
+  '11 – 50',
+  '51 – 200',
+  '201 – 500',
+  '500+',
+];
+
 export function RequestDemoPage() {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const fromSection = (location.state as any)?.from || null;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const fromSection = (location.state as any)?.from || null;
 
-    const handleReturnHome = () => {
-        navigate('/', { state: { scrollTo: fromSection } });
-    };
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        company: '',
-        phone: ''
-    });
-    const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    companySize: '',
+    lookingFor: [] as string[],
+    message: '',
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const validateForm = () => {
-        const newErrors: Record<string, string> = {};
-        if (!formData.name.trim()) newErrors.name = 'Full name is required';
-        if (!formData.email.trim()) {
-            newErrors.email = 'Work email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Please enter a valid work email';
-        }
-        if (!formData.company.trim()) newErrors.company = 'Company name is required';
+  const handleReturnHome = () => {
+    navigate('/', { state: { scrollTo: fromSection } });
+  };
 
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!validateForm()) return;
-
-        setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-        // Clear error when user starts typing
-        if (errors[name]) {
-            setErrors(prev => {
-                const newErrors = { ...prev };
-                delete newErrors[name];
-                return newErrors;
-            });
-        }
-    };
-
-    if (isSubmitted) {
-        return (
-            <div className="min-h-screen bg-[#F8F7F4] flex items-center justify-center p-6">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-white p-12 rounded-[32px] shadow-xl border border-[#dadada] max-w-xl w-full text-center"
-                >
-                    <div className="w-20 h-20 bg-[#f0f9ff] rounded-full flex items-center justify-center mx-auto mb-8">
-                        <CheckCircle2 className="w-10 h-10 text-[#3b82f6]" />
-                    </div>
-                    <h1 className="text-3xl font-heading font-bold text-[#1f2937] mb-4">Request Received</h1>
-                    <p className="text-lg text-[#1f2937]/70 font-serif leading-relaxed mb-10">
-                        Thank you for your interest in TalentOps. One of our workforce intelligence experts will reach out to you within 24 hours to schedule your personalized demo.
-                    </p>
-                    <button
-                        onClick={handleReturnHome}
-                        className="bg-[#1f2937] text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 mx-auto hover:bg-[#111827] transition-colors"
-                    >
-                        Return Home
-                    </button>
-                </motion.div>
-            </div>
-        );
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name.trim()) newErrors.name = 'Full name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Work email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid work email';
     }
+    if (!formData.company.trim()) newErrors.company = 'Company name is required';
+    if (!formData.companySize) newErrors.companySize = 'Please select your company size';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+    setIsSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => { const n = { ...prev }; delete n[name]; return n; });
+    }
+  };
+
+  const toggleLookingFor = (option: string) => {
+    setFormData(prev => ({
+      ...prev,
+      lookingFor: prev.lookingFor.includes(option)
+        ? prev.lookingFor.filter(o => o !== option)
+        : [...prev.lookingFor, option],
+    }));
+  };
+
+  if (isSubmitted) {
     return (
-        <div className="h-screen bg-[#F8F7F4] flex flex-col relative px-6 md:px-12 py-4 overflow-hidden">
-            <main className="flex-grow flex items-center justify-center py-6">
-                <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Left side: Context */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <span className="text-[#3b82f6] font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Request a Demo</span>
-                        <h1 className="text-4xl md:text-5xl font-heading font-bold text-[#1f2937] leading-[1.1] mb-6">
-                            See TalentOps in Action
-                        </h1>
-                        <p className="text-lg text-[#1f2937]/70 font-serif leading-relaxed mb-6 max-w-lg">
-                            Discover how our workforce intelligence platform can help you structure growth, optimize performance, and build a high-ROI workforce.
-                        </p>
-
-                        <div className="space-y-4">
-                            {[
-                                "Personalized walkthrough of key features",
-                                "Custom ROI analysis for your team",
-                                "Deep dive into data integrations",
-                                "Answers to your specific technical questions"
-                            ].map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-3 text-[#1f2937]">
-                                    <div className="w-5 h-5 rounded-full bg-[#f0f9ff] flex items-center justify-center">
-                                        <ChevronRight className="w-3 h-3 text-[#3b82f6]" />
-                                    </div>
-                                    <span className="font-serif font-medium text-sm">{item}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Right side: Onboarding Invitation */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="bg-white p-12 md:p-16 rounded-[40px] shadow-2xl border border-[#dadada] text-center flex flex-col items-center justify-center min-h-[500px]"
-                    >
-                        <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-10">
-                            <Building2 className="w-8 h-8 text-[#3b82f6]" />
-                        </div>
-
-                        <h2 className="text-4xl md:text-5xl font-heading font-bold text-[#1f2937] leading-tight mb-8">
-                            Ready to build your <br/> workspace?
-                        </h2>
-                        
-                        <p className="text-lg text-[#1f2937]/60 font-serif leading-relaxed mb-12 max-w-sm">
-                            Skip the wait and start configuring your workforce intelligence environment immediately through our automated onboarding wizard.
-                        </p>
-
-                        <button
-                            onClick={() => navigate('/wizard')}
-                            className="w-full bg-[#3b82f6] text-white py-5 rounded-2xl font-bold text-xl hover:bg-[#2563eb] transition-all shadow-2xl shadow-blue-500/25 flex items-center justify-center gap-3 group"
-                        >
-                            Start Setup Now
-                            <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-                        </button>
-
-                        <div className="mt-8 flex items-center gap-2 text-[10px] font-bold text-[#1f2937]/40 uppercase tracking-widest">
-                            <span>No credit card required</span>
-                            <span className="w-1 h-1 rounded-full bg-[#1f2937]/20" />
-                            <span>Instant Access</span>
-                        </div>
-                    </motion.div>
-                </div>
-            </main>
-
-            {/* Bottom Left Back Link */}
-            <div className="absolute bottom-8 left-8 md:left-12">
-                <button onClick={handleReturnHome} className="inline-flex items-center gap-2 text-[#1f2937]/80 hover:text-[#3b82f6] transition-colors font-bold group text-sm">
-                    <div className="w-7 h-7 rounded-full bg-white border border-[#dadada] flex items-center justify-center group-hover:bg-[#3b82f6] group-hover:border-[#3b82f6] group-hover:text-white transition-all">
-                        <ArrowLeft className="w-3.5 h-3.5" />
-                    </div>
-                    Back to Home
-                </button>
-            </div>
+      <div className="demo-page">
+        <div className="demo-success">
+          <div className="demo-success-icon">✓</div>
+          <h1>Request Received</h1>
+          <p>Thank you for your interest in TalentOps. One of our team members will reach out within 24 hours to schedule your personalized demo.</p>
+          <button onClick={handleReturnHome} className="demo-btn-primary">Return to Home</button>
         </div>
+      </div>
     );
+  }
+
+  return (
+    <div className="demo-page">
+      <div className="demo-back">
+        <button onClick={handleReturnHome} className="demo-back-btn">← Back to Home</button>
+      </div>
+
+      <div className="demo-layout">
+        {/* Left: Context */}
+        <div className="demo-left">
+          <div className="demo-logo">Talent<span>Ops</span></div>
+          <div className="demo-brand-tag">Operate Your Talent.</div>
+          <h1 className="demo-heading">Book a Demo</h1>
+          <p className="demo-subtext">
+            See how TalentOps manages your complete workforce lifecycle — from recruiting to payroll to performance — in one connected platform.
+          </p>
+          <div className="demo-benefits">
+            {[
+              'Personalized walkthrough of all six product modules',
+              'See how TalentOps fits your organization type',
+              'Learn how TalentOps Hiring Agency works alongside the platform',
+              'Get answers to your specific questions',
+              '30 minutes · No commitment required',
+            ].map((item, i) => (
+              <div key={i} className="demo-benefit-item">
+                <span className="demo-benefit-check">✓</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Form */}
+        <div className="demo-right">
+          <div className="demo-form-card">
+            <h2 className="demo-form-title">Tell us about yourself</h2>
+            <form onSubmit={handleSubmit} className="demo-form" noValidate>
+
+              <div className="demo-form-row">
+                <div className="demo-field">
+                  <label className="demo-label" htmlFor="demo-name">Full Name *</label>
+                  <input
+                    id="demo-name"
+                    type="text"
+                    name="name"
+                    placeholder="Your full name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`demo-input ${errors.name ? 'error' : ''}`}
+                  />
+                  {errors.name && <span className="demo-error">{errors.name}</span>}
+                </div>
+                <div className="demo-field">
+                  <label className="demo-label" htmlFor="demo-email">Work Email *</label>
+                  <input
+                    id="demo-email"
+                    type="email"
+                    name="email"
+                    placeholder="you@company.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`demo-input ${errors.email ? 'error' : ''}`}
+                  />
+                  {errors.email && <span className="demo-error">{errors.email}</span>}
+                </div>
+              </div>
+
+              <div className="demo-form-row">
+                <div className="demo-field">
+                  <label className="demo-label" htmlFor="demo-company">Company Name *</label>
+                  <input
+                    id="demo-company"
+                    type="text"
+                    name="company"
+                    placeholder="Your company name"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className={`demo-input ${errors.company ? 'error' : ''}`}
+                  />
+                  {errors.company && <span className="demo-error">{errors.company}</span>}
+                </div>
+                <div className="demo-field">
+                  <label className="demo-label" htmlFor="demo-phone">Phone</label>
+                  <input
+                    id="demo-phone"
+                    type="tel"
+                    name="phone"
+                    placeholder="+91 98765 43210"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="demo-input"
+                  />
+                </div>
+              </div>
+
+              <div className="demo-field">
+                <label className="demo-label" htmlFor="demo-size">Company Size *</label>
+                <select
+                  id="demo-size"
+                  name="companySize"
+                  value={formData.companySize}
+                  onChange={handleChange}
+                  className={`demo-input demo-select ${errors.companySize ? 'error' : ''}`}
+                >
+                  <option value="">Select team size</option>
+                  {COMPANY_SIZE_OPTIONS.map(o => <option key={o} value={o}>{o} employees</option>)}
+                </select>
+                {errors.companySize && <span className="demo-error">{errors.companySize}</span>}
+              </div>
+
+              <div className="demo-field">
+                <label className="demo-label">What are you looking for?</label>
+                <div className="demo-checkboxes">
+                  {LOOKING_FOR_OPTIONS.map(option => (
+                    <label key={option} className={`demo-checkbox-chip ${formData.lookingFor.includes(option) ? 'selected' : ''}`}>
+                      <input
+                        type="checkbox"
+                        checked={formData.lookingFor.includes(option)}
+                        onChange={() => toggleLookingFor(option)}
+                        style={{ display: 'none' }}
+                      />
+                      {formData.lookingFor.includes(option) ? '✓ ' : ''}{option}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="demo-field">
+                <label className="demo-label" htmlFor="demo-message">Message / Requirements</label>
+                <textarea
+                  id="demo-message"
+                  name="message"
+                  placeholder="Tell us about your team, current challenges, or anything specific you'd like to see in the demo..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="demo-input demo-textarea"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="demo-btn-primary"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+                    <span className="demo-spinner"></span>
+                    Submitting...
+                  </span>
+                ) : 'Book a Demo →'}
+              </button>
+
+              <p className="demo-disclaimer">We'll reach out within 24 hours. No commitment required.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

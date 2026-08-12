@@ -348,3 +348,282 @@
 
 /* Hide the original radial gradient so Prism is visible */
 .landing-page-wrapper .hero::before { display: none; }
+
+/* ── HERO BRAND TAG ── */
+.landing-page-wrapper .hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(27,107,245,0.15); border: 1px solid rgba(27,107,245,0.35);
+  color: var(--blue-mid); font-size: 0.8rem; font-weight: 600;
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+  letter-spacing: 0.04em;
+}
+.landing-page-wrapper .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+
+/* ── TALENT LIFECYCLE ── */
+.landing-page-wrapper .lifecycle-section { background: var(--white); }
+.landing-page-wrapper .lifecycle-flow {
+  display: flex; align-items: flex-start; flex-wrap: wrap;
+  gap: 0; margin-top: 56px; position: relative;
+  justify-content: center;
+}
+.landing-page-wrapper .lifecycle-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; padding: 0 8px;
+  flex: 1; min-width: 120px; max-width: 160px;
+}
+.landing-page-wrapper .lifecycle-icon {
+  font-size: 2rem; margin-bottom: 10px;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--blue-light); display: flex; align-items: center;
+  justify-content: center; border: 2px solid rgba(27,107,245,0.2);
+  transition: all .25s;
+}
+.landing-page-wrapper .lifecycle-step:hover .lifecycle-icon {
+  background: var(--blue-brand); transform: scale(1.08);
+}
+.landing-page-wrapper .lifecycle-num {
+  font-size: 0.7rem; font-weight: 700; color: var(--blue-brand);
+  letter-spacing: 0.06em; margin-bottom: 4px;
+}
+.landing-page-wrapper .lifecycle-label {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 6px;
+}
+.landing-page-wrapper .lifecycle-desc {
+  font-size: 0.78rem; color: var(--gray-400); line-height: 1.5; max-width: 120px;
+}
+.landing-page-wrapper .lifecycle-arrow {
+  position: absolute; right: -18px; top: 30px;
+  font-size: 1.2rem; color: var(--blue-brand); opacity: 0.4;
+  z-index: 1;
+}
+
+/* ── HIRING AGENCY ── */
+.landing-page-wrapper .hiring-agency-section {
+  background: var(--navy-deep);
+  padding: 80px 2rem;
+}
+.landing-page-wrapper .hiring-agency-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+.landing-page-wrapper .hiring-distinction {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px;
+}
+.landing-page-wrapper .distinction-pill {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg); padding: 14px 20px; display: flex; flex-direction: column; gap: 4px;
+}
+.landing-page-wrapper .distinction-pill-gold {
+  background: rgba(27,107,245,0.15); border-color: rgba(27,107,245,0.35);
+}
+.landing-page-wrapper .distinction-label {
+  font-size: 0.75rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.landing-page-wrapper .distinction-desc {
+  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+}
+.landing-page-wrapper .distinction-connector {
+  font-size: 1.5rem; color: var(--blue-mid); font-weight: 300;
+}
+.landing-page-wrapper .hiring-flow {
+  display: flex; flex-direction: column; gap: 0;
+}
+.landing-page-wrapper .hiring-step {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04); border-radius: var(--radius-md);
+  position: relative; margin-bottom: 4px;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background .2s;
+}
+.landing-page-wrapper .hiring-step:hover { background: rgba(255,255,255,0.08); }
+.landing-page-wrapper .hiring-step-num {
+  font-size: 0.7rem; font-weight: 700; color: var(--blue-mid);
+  background: rgba(27,107,245,0.15); border-radius: 6px;
+  padding: 3px 8px; flex-shrink: 0; letter-spacing: 0.06em;
+}
+.landing-page-wrapper .hiring-step-content { flex: 1; }
+.landing-page-wrapper .hiring-step-title { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.landing-page-wrapper .hiring-step-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+.landing-page-wrapper .hiring-step-line {
+  position: absolute; left: 28px; bottom: -4px;
+  width: 1px; height: 4px; background: rgba(27,107,245,0.3);
+}
+
+/* ── INDUSTRIES 8-GRID ── */
+.landing-page-wrapper .industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 48px; }
+
+/* ── PERSONAS ROW ── */
+.landing-page-wrapper .personas-row {
+  margin-top: 48px; display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.landing-page-wrapper .personas-label {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gray-400);
+}
+.landing-page-wrapper .personas-list { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.landing-page-wrapper .persona-chip {
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  border-radius: 100px; padding: 7px 18px;
+  font-size: 0.83rem; font-weight: 500; color: var(--navy);
+  transition: all .2s;
+}
+.landing-page-wrapper .persona-chip:hover { border-color: var(--blue-brand); color: var(--blue-brand); }
+
+/* ── WHY BRAND STORY ── */
+.landing-page-wrapper .why-brand-story {
+  text-align: center; padding-bottom: 24px;
+}
+.landing-page-wrapper .why-brand-name {
+  font-family: var(--serif); font-size: 1.8rem; font-weight: 700;
+  color: var(--white); letter-spacing: 0.1em;
+}
+.landing-page-wrapper .why-brand-tagline {
+  font-size: 1rem; color: var(--blue-mid); font-weight: 500; margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* ── FAQ ── */
+.landing-page-wrapper .faq-section { background: var(--gray-50); }
+.landing-page-wrapper .faq-list {
+  margin-top: 48px; max-width: 780px; margin-left: auto; margin-right: auto;
+}
+.landing-page-wrapper .faq-item {
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg); margin-bottom: 10px;
+  cursor: pointer; transition: all .2s;
+}
+.landing-page-wrapper .faq-item.open { border-color: var(--blue-brand); box-shadow: 0 0 0 3px rgba(27,107,245,0.08); }
+.landing-page-wrapper .faq-question {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px; font-size: 0.95rem; font-weight: 600; color: var(--navy);
+}
+.landing-page-wrapper .faq-chevron {
+  font-size: 1.3rem; color: var(--blue-brand); font-weight: 300; flex-shrink: 0; margin-left: 16px;
+}
+.landing-page-wrapper .faq-answer {
+  padding: 0 24px 20px; font-size: 0.88rem; color: var(--gray-600);
+  line-height: 1.7; border-top: 1px solid var(--gray-100); padding-top: 16px;
+}
+
+/* ── CTA BRAND TAG ── */
+.landing-page-wrapper .cta-brand-tag {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+  margin-bottom: 14px;
+}
+
+/* ── FOOTER UPDATES ── */
+.landing-page-wrapper .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+.landing-page-wrapper .footer-tagline {
+  font-size: 0.9rem; font-weight: 600; color: var(--blue-mid);
+  margin-bottom: 8px; letter-spacing: 0.02em;
+}
+.landing-page-wrapper .footer-cta-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px; background: rgba(27,107,245,0.12);
+  border-radius: var(--radius-lg); margin-bottom: 32px;
+  border: 1px solid rgba(27,107,245,0.2);
+  font-size: 0.95rem; font-weight: 600; color: var(--white);
+}
+
+/* ── BOOK A DEMO PAGE ── */
+.demo-page {
+  min-height: 100vh; background: #F7F8FA;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.demo-back {
+  padding: 20px 40px;
+}
+.demo-back-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 0.875rem; color: #4D5568; font-weight: 500;
+  display: flex; align-items: center; gap: 6px; transition: color .2s;
+}
+.demo-back-btn:hover { color: #1B6BF5; }
+.demo-layout {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  padding: 20px 40px 60px;
+  align-items: start;
+}
+.demo-logo { font-size: 1.4rem; font-weight: 700; color: #0D1B3E; margin-bottom: 4px; }
+.demo-logo span { color: #1B6BF5; }
+.demo-brand-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1B6BF5; margin-bottom: 24px; }
+.demo-heading { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); color: #0D1B3E; line-height: 1.15; margin-bottom: 16px; }
+.demo-subtext { font-size: 1rem; color: #4D5568; line-height: 1.7; margin-bottom: 32px; max-width: 440px; }
+.demo-benefits { display: flex; flex-direction: column; gap: 12px; }
+.demo-benefit-item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.875rem; color: #1E2535; }
+.demo-benefit-check { color: #00B8A0; font-weight: 700; flex-shrink: 0; }
+.demo-form-card {
+  background: #fff; border-radius: 20px; padding: 40px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.10), 0 2px 10px rgba(0,0,0,0.06);
+  border: 1.5px solid #EEF0F4;
+}
+.demo-form-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.4rem; color: #0D1B3E; margin-bottom: 24px; }
+.demo-form { display: flex; flex-direction: column; gap: 18px; }
+.demo-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.demo-field { display: flex; flex-direction: column; gap: 6px; }
+.demo-label { font-size: 0.78rem; font-weight: 600; color: #0D1B3E; letter-spacing: 0.02em; }
+.demo-input {
+  padding: 10px 14px; border-radius: 8px; font-size: 0.9rem;
+  border: 1.5px solid #D9DCE5; background: #F7F8FA; color: #1E2535;
+  font-family: inherit; transition: border-color .2s;
+  outline: none; width: 100%;
+}
+.demo-input:focus { border-color: #1B6BF5; background: #fff; }
+.demo-input.error { border-color: #9E1B1B; }
+.demo-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238B91A4' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+.demo-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+.demo-error { font-size: 0.75rem; color: #9E1B1B; }
+.demo-checkboxes { display: flex; flex-wrap: wrap; gap: 8px; }
+.demo-checkbox-chip {
+  padding: 7px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 500;
+  border: 1.5px solid #D9DCE5; background: #F7F8FA; color: #4D5568;
+  cursor: pointer; transition: all .2s; user-select: none;
+}
+.demo-checkbox-chip.selected { background: #E8F0FE; border-color: #1B6BF5; color: #1B6BF5; font-weight: 600; }
+.demo-checkbox-chip:hover { border-color: #1B6BF5; }
+.demo-btn-primary {
+  background: #1B6BF5; color: #fff; border: none; border-radius: 10px;
+  padding: 14px 24px; font-size: 1rem; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: all .2s; width: 100%;
+}
+.demo-btn-primary:hover:not(:disabled) { background: #1558D4; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(27,107,245,0.35); }
+.demo-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.demo-disclaimer { font-size: 0.75rem; color: #8B91A4; text-align: center; }
+.demo-spinner {
+  width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.demo-success {
+  max-width: 480px; margin: 80px auto; background: #fff;
+  border-radius: 24px; padding: 56px 48px; text-align: center;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.10); border: 1.5px solid #EEF0F4;
+}
+.demo-success-icon {
+  width: 64px; height: 64px; background: #E8F0FE; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #1B6BF5; margin: 0 auto 24px; font-weight: 700;
+}
+.demo-success h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 2rem; color: #0D1B3E; margin-bottom: 12px; }
+.demo-success p { font-size: 1rem; color: #4D5568; line-height: 1.7; margin-bottom: 32px; }
+
+/* ── RESPONSIVE ADDITIONS ── */
+@media (max-width: 1024px) {
+  .landing-page-wrapper .footer-top { grid-template-columns: 1fr 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .landing-page-wrapper .hiring-agency-inner { grid-template-columns: 1fr; gap: 40px; }
+  .landing-page-wrapper .lifecycle-flow { gap: 16px; }
+  .landing-page-wrapper .lifecycle-arrow { display: none; }
+  .landing-page-wrapper .lifecycle-step { min-width: 90px; max-width: 110px; }
+  .landing-page-wrapper .footer-top { grid-template-columns: 1fr 1fr; }
+  .landing-page-wrapper .footer-cta-bar { flex-direction: column; gap: 16px; text-align: center; }
+  .demo-layout { grid-template-columns: 1fr; padding: 16px 20px 40px; }
+  .demo-form-row { grid-template-columns: 1fr; }
+  .demo-back { padding: 16px 20px; }
+}
+

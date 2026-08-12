@@ -25,6 +25,14 @@ export function Navigation({ isDark = false }: NavigationProps) {
 
     const isSolid = scrolled || isDark;
 
+    const navItems = [
+        { name: 'Products', href: '/#pillars' },
+        { name: 'Solutions', href: '/#who' },
+        { name: 'TalentOps Hiring', href: '/#hiring-agency' },
+        { name: 'Resources', href: '/#faq' },
+        { name: 'About', href: '/#about' },
+    ];
+
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-[10000] transition-all duration-300 font-display ${isSolid
@@ -42,14 +50,7 @@ export function Navigation({ isDark = false }: NavigationProps) {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex gap-8">
-                    {[
-                        { name: 'Problem', href: '/#problem' },
-                        { name: 'How It Works', href: '/#how-it-works' },
-                        { name: 'Modules', href: '/#modules' },
-                        { name: 'Industries', href: '/#industries' },
-                        { name: 'Results', href: '/#results' },
-                        { name: 'Pricing', href: '/pricing' }
-                    ].map((item) => (
+                    {navItems.map((item) => (
                         <a
                             key={item.name}
                             href={item.href}
@@ -72,13 +73,13 @@ export function Navigation({ isDark = false }: NavigationProps) {
                             : 'text-white hover:text-white/80'
                             }`}
                     >
-                        Sign In
+                        Login
                     </button>
                     <button
                         onClick={() => navigate('/request-demo', { state: { from: 'navbar' } })}
                         className="bg-[#3b82f6] text-white px-6 py-2.5 rounded-full font-display font-bold text-[15px] hover:bg-[#2563eb] transition-all shadow-sm hover:shadow-md"
                     >
-                        Request a Demo
+                        Book a Demo
                     </button>
                 </div>
 
@@ -97,15 +98,8 @@ export function Navigation({ isDark = false }: NavigationProps) {
 
             {/* Mobile Menu Content */}
             {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-white border-b border-[#dadada] flex flex-col p-6 gap-4 md:hidden shadow-xl animate-in fade-in slide-in-from-top-4">
-                    {[
-                        { name: 'Problem', href: '/#problem' },
-                        { name: 'How It Works', href: '/#how-it-works' },
-                        { name: 'Modules', href: '/#modules' },
-                        { name: 'Industries', href: '/#industries' },
-                        { name: 'Results', href: '/#results' },
-                        { name: 'Pricing', href: '/pricing' }
-                    ].map((item) => (
+                <div className="absolute top-full left-0 right-0 bg-white border-b border-[#dadada] flex flex-col p-6 gap-4 md:hidden shadow-xl">
+                    {navItems.map((item) => (
                         <a
                             key={item.name}
                             href={item.href}
@@ -116,7 +110,7 @@ export function Navigation({ isDark = false }: NavigationProps) {
                         </a>
                     ))}
                     <div className="flex flex-col gap-4 pt-4 border-t border-[#dadada]">
-                        <button onClick={handleLoginClick} className="text-lg font-display font-semibold text-left text-[#1f2937]">Sign In</button>
+                        <button onClick={handleLoginClick} className="text-lg font-display font-semibold text-left text-[#1f2937]">Login</button>
                         <button
                             onClick={() => {
                                 setIsMobileMenuOpen(false);
@@ -124,7 +118,7 @@ export function Navigation({ isDark = false }: NavigationProps) {
                             }}
                             className="bg-[#3b82f6] text-white px-6 py-3 rounded-xl font-display font-bold text-center"
                         >
-                            Request a Demo
+                            Book a Demo
                         </button>
                     </div>
                 </div>

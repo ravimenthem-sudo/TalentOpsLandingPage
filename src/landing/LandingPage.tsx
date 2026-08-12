@@ -1,51 +1,87 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import GridScan from './components/GridScan';
 import ProblemDiagnostic from './components/ProblemDiagnostic';
-import OperationsEngine from './components/OperationsEngine';
 import { TestimonialsSection } from '../components/ui/testimonial-v2';
 import './LandingPage.css';
 
 export function LandingPage() {
-  const [activeModule, setActiveModule] = useState('tasks');
+  const [activePillar, setActivePillar] = useState('talent-acquisition');
   const [autoRotate, setAutoRotate] = useState(true);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const pillars = [
+    'talent-acquisition',
+    'employee-management',
+    'workforce-operations',
+    'payroll',
+    'performance',
+    'analytics',
+  ];
 
   useEffect(() => {
     if (!autoRotate) return;
-    const modules = ['tasks', 'people', 'finance', 'hiring', 'comms'];
     const timer = setInterval(() => {
-      setActiveModule(prev => {
-        const nextIndex = (modules.indexOf(prev) + 1) % modules.length;
-        return modules[nextIndex];
+      setActivePillar(prev => {
+        const nextIndex = (pillars.indexOf(prev) + 1) % pillars.length;
+        return pillars[nextIndex];
       });
-    }, 2500); // 2.5 seconds feels a bit more natural for reading headers
+    }, 3000);
     return () => clearInterval(timer);
   }, [autoRotate]);
+
+  const faqs = [
+    {
+      q: 'What is TalentOps?',
+      a: 'TalentOps is a workforce lifecycle and talent operations platform. It brings recruitment, employee management, payroll, performance and workforce operations together in one connected system — so growing organizations can operate their people without relying on disconnected tools and manual processes.',
+    },
+    {
+      q: 'Who is TalentOps for?',
+      a: 'TalentOps is built for professional-service organizations and growing businesses — startups, SMEs, consulting firms, IT companies, agencies, healthcare organizations, and any team that needs structured people operations without complexity.',
+    },
+    {
+      q: 'What modules are currently live?',
+      a: 'All six product pillars are live: Talent Acquisition, Employee Management, Workforce Operations, Payroll & Compensation, Performance Management, and Reports & Analytics.',
+    },
+    {
+      q: 'What is TalentOps Hiring Agency?',
+      a: 'TalentOps Hiring Agency is a recruitment service that helps organizations source, screen and hire the right talent. It works alongside the TalentOps platform — we help you build your workforce, and then you operate and manage that workforce through TalentOps.',
+    },
+    {
+      q: 'How is TalentOps different from a generic HRMS?',
+      a: 'TalentOps is not just a records system. It connects the entire talent lifecycle — from the moment you attract a candidate to the moment they perform and grow inside your organization. The central idea is operating talent, not just storing data about it.',
+    },
+    {
+      q: 'How do I get a demo?',
+      a: 'Click "Book a Demo" anywhere on this page. Fill in a short form and one of our team members will reach out within 24 hours to schedule a personalized walkthrough.',
+    },
+    {
+      q: 'Is my organization\'s data secure?',
+      a: 'TalentOps handles workforce information with role-based access control and secure authentication. We are committed to responsible data handling. Reach out during the demo to discuss specific compliance or data requirements for your organization.',
+    },
+  ];
 
   return (
     <div className="landing-page-wrapper">
 
-
-      {/**/}
-      <nav>
+      {/* ── NAVIGATION ── */}
+      <nav id="nav">
         <a href="#" className="nav-logo">Talent<span>Ops</span></a>
         <div className="nav-links">
-          <a href="#problem">Problem</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#modules">Modules</a>
-          <a href="#industries">Industries</a>
-          <a href="#results">Results</a>
-          <Link to="/pricing">Pricing</Link>
+          <a href="#pillars">Products</a>
+          <a href="#who">Solutions</a>
+          <a href="#hiring-agency">TalentOps Hiring</a>
+          <a href="#faq">Resources</a>
+          <a href="#about">About</a>
         </div>
         <div className="nav-cta">
-          <Link to="/login" className="btn btn-ghost">Sign In</Link>
-          <Link to="/wizard" className="btn btn-primary">Partner with Us →</Link>
+          <Link to="/login" className="btn btn-ghost">Login</Link>
+          <Link to="/request-demo" className="btn btn-primary">Book a Demo →</Link>
         </div>
       </nav>
 
-      {/**/}
-      <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
-
+      {/* ── HERO ── */}
+      <section className="hero" id="hero" style={{ position: 'relative', overflow: 'hidden' }}>
         <GridScan
           sensitivity={0.55}
           lineThickness={1}
@@ -59,338 +95,411 @@ export function LandingPage() {
           noiseIntensity={0.01}
         />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <h1>Stop Managing Talent by <em>Instinct.</em><br />Start Operating with <em>Intelligence.</em></h1>
-          <p>We run your entire workforce operations for you—combining AI efficiency with hands-on human expertise.</p>
+          <div className="hero-badge">
+            <div className="dot"></div>
+            Operate Your Talent.
+          </div>
+          <h1>From Hiring to High Performance —<br /><em>Manage Your Entire Workforce</em> in One Place.</h1>
+          <p>TalentOps brings recruitment, employee management, payroll, performance and workforce operations together in one connected platform built for growing businesses.</p>
           <div className="hero-btns">
-            <Link to="/wizard" className="btn btn-primary btn-lg">Partner with an AI-Powered Ops Team</Link>
-            <a href="#how-it-works" className="btn btn-outline-white btn-lg">View Our Process</a>
+            <Link to="/request-demo" className="btn btn-primary btn-lg">Book a Demo →</Link>
+            <a href="#lifecycle" className="btn btn-outline-white btn-lg">See How It Works</a>
           </div>
           <div className="hero-trust">
-            <span>✓ No large HR team needed</span>
+            <span>✓ Complete talent lifecycle</span>
             <span className="hero-trust-dot"></span>
-            <span>✓ AI handles 80% of daily ops</span>
+            <span>✓ Built for growing businesses</span>
             <span className="hero-trust-dot"></span>
-            <span>✓ Experts on call for complex cases</span>
+            <span>✓ Recruitment to payroll in one place</span>
           </div>
         </div>
       </section>
 
-      {/**/}
+      {/* ── MARQUEE ── */}
+      <div className="marquee-section">
+        <div className="marquee-track">
+          <div className="marquee-item"><span className="marquee-dot"></span>Talent Acquisition</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Employee Management</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Workforce Operations</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Payroll &amp; Compensation</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Performance Management</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Reports &amp; Analytics</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>TalentOps Hiring Agency</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Talent Acquisition</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Employee Management</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Workforce Operations</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Payroll &amp; Compensation</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Performance Management</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>Reports &amp; Analytics</div>
+          <div className="marquee-item"><span className="marquee-dot"></span>TalentOps Hiring Agency</div>
+        </div>
+      </div>
 
-      {/**/}
+      {/* ── TALENT LIFECYCLE ── */}
+      <section className="lifecycle-section" id="lifecycle">
+        <div className="container">
+          <div className="section-head-center">
+            <div className="section-tag">The TalentOps Lifecycle</div>
+            <h2 className="section-title">One Continuous Platform. Seven Stages.</h2>
+            <p className="section-sub">TalentOps operates your people from the moment you attract talent to the day they grow your organization — without switching between systems.</p>
+          </div>
+          <div className="lifecycle-flow">
+            {[
+              { step: '01', label: 'Attract', icon: '📡', desc: 'Bring potential talent into your pipeline' },
+              { step: '02', label: 'Hire', icon: '🤝', desc: 'Manage the hiring process and select candidates' },
+              { step: '03', label: 'Onboard', icon: '🚀', desc: 'Bring new employees into the organization smoothly' },
+              { step: '04', label: 'Manage', icon: '📋', desc: 'Employee records, attendance and daily operations' },
+              { step: '05', label: 'Pay', icon: '💳', desc: 'Payroll, salary and payslip management' },
+              { step: '06', label: 'Perform', icon: '📈', desc: 'Goals, reviews and performance tracking' },
+              { step: '07', label: 'Grow', icon: '🌱', desc: 'Build a stronger, more capable organization' },
+            ].map((item, i) => (
+              <div key={i} className="lifecycle-step">
+                <div className="lifecycle-icon">{item.icon}</div>
+                <div className="lifecycle-num">{item.step}</div>
+                <div className="lifecycle-label">{item.label}</div>
+                <div className="lifecycle-desc">{item.desc}</div>
+                {i < 6 && <div className="lifecycle-arrow">→</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROBLEM DIAGNOSTIC ── */}
       <ProblemDiagnostic />
 
-      {/**/}
-      <OperationsEngine />
-
-      {/**/}
-      <section className="modules-section" id="modules">
+      {/* ── PRODUCT PILLARS ── */}
+      <section className="modules-section" id="pillars">
         <div className="container">
-          <div className="section-tag">What We Handle For You</div>
-          <h2 className="section-title">Every Workforce Outcome. One Team.</h2>
-          <p className="section-sub">We don't just give you a dashboard to manage. We handle the heavy lifting across your entire organization.</p>
+          <div className="section-tag">Product Pillars</div>
+          <h2 className="section-title">Everything Your Workforce Needs. One Platform.</h2>
+          <p className="section-sub">Six live product areas covering the complete talent lifecycle — from attracting candidates to measuring performance.</p>
 
           <div className="module-tabs">
-            <div className={`module-tab ${activeModule === "tasks" ? "active" : ""}`} onClick={() => { setActiveModule("tasks"); setAutoRotate(false); }}>Task Management</div>
-            <div className={`module-tab ${activeModule === "people" ? "active" : ""}`} onClick={() => { setActiveModule("people"); setAutoRotate(false); }}>People Operations</div>
-            <div className={`module-tab ${activeModule === "finance" ? "active" : ""}`} onClick={() => { setActiveModule("finance"); setAutoRotate(false); }}>Finance &amp; Billing</div>
-            <div className={`module-tab ${activeModule === "hiring" ? "active" : ""}`} onClick={() => { setActiveModule("hiring"); setAutoRotate(false); }}>Hiring Pipeline</div>
-            <div className={`module-tab ${activeModule === "comms" ? "active" : ""}`} onClick={() => { setActiveModule("comms"); setAutoRotate(false); }}>Communications</div>
+            <div className={`module-tab ${activePillar === 'talent-acquisition' ? 'active' : ''}`} onClick={() => { setActivePillar('talent-acquisition'); setAutoRotate(false); }}>Talent Acquisition</div>
+            <div className={`module-tab ${activePillar === 'employee-management' ? 'active' : ''}`} onClick={() => { setActivePillar('employee-management'); setAutoRotate(false); }}>Employee Management</div>
+            <div className={`module-tab ${activePillar === 'workforce-operations' ? 'active' : ''}`} onClick={() => { setActivePillar('workforce-operations'); setAutoRotate(false); }}>Workforce Operations</div>
+            <div className={`module-tab ${activePillar === 'payroll' ? 'active' : ''}`} onClick={() => { setActivePillar('payroll'); setAutoRotate(false); }}>Payroll &amp; Compensation</div>
+            <div className={`module-tab ${activePillar === 'performance' ? 'active' : ''}`} onClick={() => { setActivePillar('performance'); setAutoRotate(false); }}>Performance Management</div>
+            <div className={`module-tab ${activePillar === 'analytics' ? 'active' : ''}`} onClick={() => { setActivePillar('analytics'); setAutoRotate(false); }}>Reports &amp; Analytics</div>
           </div>
 
-          {/**/}
-          <div className={`module-showcase ${activeModule === "tasks" ? "active" : ""}`} id="mod-tasks">
+          {/* Pillar 1: Talent Acquisition */}
+          <div className={`module-showcase ${activePillar === 'talent-acquisition' ? 'active' : ''}`}>
             <div className="module-info">
-              <h3>Task Management</h3>
-              <p>Know exactly who is doing what, when it's due, and where things stand — without chasing anyone for updates.</p>
+              <h3>Talent Acquisition</h3>
+              <p>Manage your entire recruitment pipeline — from job posting to onboarding handoff — in one place. Never lose track of a candidate or a role again.</p>
               <ul className="module-features">
-                <li>Assign tasks with owners, deadlines, and priority levels</li>
-                <li>Real-time progress tracking across every team</li>
-                <li>Automatic escalation when tasks are overdue</li>
-                <li>Identify overloaded team members before burnout hits</li>
-                <li>Link tasks to clients, projects, or billing records</li>
+                <li>Candidate management across every hiring stage</li>
+                <li>Hiring pipeline with interview scheduling</li>
+                <li>Job requisition and role management</li>
+                <li>Onboarding handoff once a candidate is hired</li>
+                <li>Recruitment activity tracking and visibility</li>
               </ul>
             </div>
             <div className="module-screen">
               <div className="screen-topbar">
                 <div className="screen-dots"><div className="screen-dot" style={{ background: '#FF5F57' }}></div><div className="screen-dot" style={{ background: '#FEBC2E' }}></div><div className="screen-dot" style={{ background: '#28C840' }}></div></div>
-                <span className="screen-title">TalentOps — Task Module</span>
+                <span className="screen-title">TalentOps — Talent Acquisition</span>
               </div>
               <div className="screen-body">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)' }}>Active Tasks <span style={{ background: 'var(--blue-light)', color: 'var(--blue-brand)', borderRadius: '100px', padding: '2px 8px', fontSize: '0.72rem', marginLeft: '6px' }}>24</span></div>
-                  <div style={{ display: 'flex', gap: '6px' }}>
-                    <span className="mini-badge badge-blue">My Tasks</span>
-                    <span className="mini-badge" style={{ background: 'var(--gray-100)', color: 'var(--gray-600)' }}>All Teams</span>
-                  </div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)' }}>Hiring Pipeline <span style={{ background: 'var(--blue-light)', color: 'var(--blue-brand)', borderRadius: '100px', padding: '2px 8px', fontSize: '0.72rem', marginLeft: '6px' }}>6 Open Roles</span></div>
+                  <span className="mini-badge badge-red">2 Urgent</span>
                 </div>
                 <table className="mini-table">
-                  <tr><th>Task</th><th>Assignee</th><th>Progress</th><th>Status</th></tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Onboard Priya S.</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Due: Today</span></td>
-                    <td>Raj K.</td>
-                    <td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '70%' }}></div></div></div></td>
-                    <td><span className="mini-badge badge-amber">In Progress</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Q3 Payroll Review</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Due: Tomorrow</span></td>
-                    <td>Meera T.</td>
-                    <td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '100%', background: 'var(--teal)' }}></div></div></div></td>
-                    <td><span className="mini-badge badge-green">Done</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Interview — Dev Role</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Due: Jun 5</span></td>
-                    <td>Arjun M.</td>
-                    <td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '30%' }}></div></div></div></td>
-                    <td><span className="mini-badge badge-red">Overdue</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Client Billing — June</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Due: Jun 10</span></td>
-                    <td>AI Manager</td>
-                    <td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '50%' }}></div></div></div></td>
-                    <td><span className="mini-badge badge-blue">Automated</span></td>
-                  </tr>
+                  <tr><th>Role</th><th>Stage</th><th>Candidates</th><th>Priority</th></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Senior Developer</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Engineering</span></td><td><span className="mini-badge badge-amber">Interview</span></td><td>4</td><td><span className="mini-badge badge-red">High</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>UX Designer</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Product</span></td><td><span className="mini-badge badge-blue">Screening</span></td><td>11</td><td><span className="mini-badge badge-amber">Medium</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>HR Executive</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>People Ops</span></td><td><span className="mini-badge badge-green">Offer Sent</span></td><td>1</td><td><span className="mini-badge badge-green">Filled</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Data Analyst</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Analytics</span></td><td><span className="mini-badge" style={{ background: 'var(--gray-100)', color: 'var(--gray-600)' }}>Sourcing</span></td><td>2</td><td><span className="mini-badge badge-red">Urgent</span></td></tr>
                 </table>
               </div>
             </div>
           </div>
 
-          {/**/}
-          <div className={`module-showcase ${activeModule === "people" ? "active" : ""}`} id="mod-people">
+          {/* Pillar 2: Employee Management */}
+          <div className={`module-showcase ${activePillar === 'employee-management' ? 'active' : ''}`}>
             <div className="module-info">
-              <h3>People Operations</h3>
-              <p>Manage attendance, leave, and employee records — with full visibility into who's in, who's out, and who's overloaded.</p>
+              <h3>Employee Management</h3>
+              <p>Maintain complete, accurate employee profiles and records — from offer letter to exit — in one organized system your team can actually use.</p>
               <ul className="module-features">
-                <li>Real-time attendance tracking and timesheets</li>
-                <li>Leave request and approval workflows</li>
-                <li>Employee lifecycle management from offer to exit</li>
-                <li>Workload heatmaps to spot burnout risk early</li>
-                <li>Contractor and full-time employee support</li>
+                <li>Employee profiles with personal and role information</li>
+                <li>Document management and records storage</li>
+                <li>Organizational structure and reporting lines</li>
+                <li>Employee lifecycle from onboarding to exit</li>
+                <li>Role and department management</li>
               </ul>
             </div>
             <div className="module-screen">
               <div className="screen-topbar">
                 <div className="screen-dots"><div className="screen-dot" style={{ background: '#FF5F57' }}></div><div className="screen-dot" style={{ background: '#FEBC2E' }}></div><div className="screen-dot" style={{ background: '#28C840' }}></div></div>
-                <span className="screen-title">TalentOps — People Operations</span>
+                <span className="screen-title">TalentOps — Employee Management</span>
+              </div>
+              <div className="screen-body">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)' }}>Employee Directory</div>
+                  <span className="mini-badge badge-green">42 Active</span>
+                </div>
+                <table className="mini-table">
+                  <tr><th>Employee</th><th>Role</th><th>Department</th><th>Status</th></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Ananya R.</strong></td><td style={{ color: 'var(--gray-400)' }}>Senior Developer</td><td>Engineering</td><td><span className="mini-badge badge-green">Active</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Siddharth P.</strong></td><td style={{ color: 'var(--gray-400)' }}>UX Designer</td><td>Product</td><td><span className="mini-badge badge-amber">On Leave</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Kavitha M.</strong></td><td style={{ color: 'var(--gray-400)' }}>HR Executive</td><td>People Ops</td><td><span className="mini-badge badge-green">Active</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Priya S.</strong></td><td style={{ color: 'var(--gray-400)' }}>Data Analyst</td><td>Analytics</td><td><span className="mini-badge badge-blue">Onboarding</span></td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Pillar 3: Workforce Operations */}
+          <div className={`module-showcase ${activePillar === 'workforce-operations' ? 'active' : ''}`}>
+            <div className="module-info">
+              <h3>Workforce Operations</h3>
+              <p>Manage attendance, leave and day-to-day people operations without chasing spreadsheets or approval emails.</p>
+              <ul className="module-features">
+                <li>Attendance tracking and timesheets</li>
+                <li>Leave request and approval workflows</li>
+                <li>Task assignment and progress tracking</li>
+                <li>Team visibility and workload management</li>
+                <li>Day-to-day people operations in one place</li>
+              </ul>
+            </div>
+            <div className="module-screen">
+              <div className="screen-topbar">
+                <div className="screen-dots"><div className="screen-dot" style={{ background: '#FF5F57' }}></div><div className="screen-dot" style={{ background: '#FEBC2E' }}></div><div className="screen-dot" style={{ background: '#28C840' }}></div></div>
+                <span className="screen-title">TalentOps — Workforce Operations</span>
               </div>
               <div className="screen-body">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)' }}>Team Attendance — Today</div>
-                  <span className="mini-badge badge-green">18 / 22 Present</span>
+                  <span className="mini-badge badge-green">36 / 42 Present</span>
                 </div>
                 <table className="mini-table">
-                  <tr><th>Employee</th><th>Role</th><th>Status</th><th>Hours Today</th></tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Ananya R.</strong></td>
-                    <td style={{ color: 'var(--gray-400)' }}>Developer</td>
-                    <td><span className="mini-badge badge-green">Present</span></td>
-                    <td>6h 42m</td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Siddharth P.</strong></td>
-                    <td style={{ color: 'var(--gray-400)' }}>Designer</td>
-                    <td><span className="mini-badge badge-amber">Leave</span></td>
-                    <td>—</td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Kavitha M.</strong></td>
-                    <td style={{ color: 'var(--gray-400)' }}>HR Ops</td>
-                    <td><span className="mini-badge badge-green">Present</span></td>
-                    <td>7h 10m</td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ color: 'var(--navy)' }}>Vikram S.</strong></td>
-                    <td style={{ color: 'var(--gray-400)' }}>Analyst</td>
-                    <td><span className="mini-badge badge-red">⚠ Overloaded</span></td>
-                    <td>9h 55m</td>
-                  </tr>
+                  <tr><th>Employee</th><th>Status</th><th>Hours Today</th><th>Leave Balance</th></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Ananya R.</strong></td><td><span className="mini-badge badge-green">Present</span></td><td>6h 42m</td><td>12 days</td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Siddharth P.</strong></td><td><span className="mini-badge badge-amber">Leave</span></td><td>—</td><td>8 days</td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Vikram S.</strong></td><td><span className="mini-badge badge-red">⚠ Overtime</span></td><td>9h 55m</td><td>15 days</td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Kavitha M.</strong></td><td><span className="mini-badge badge-green">Present</span></td><td>7h 10m</td><td>10 days</td></tr>
                 </table>
-                <div style={{ marginTop: '14px', padding: '10px 12px', background: '#FEF3DC', borderRadius: 'var(--radius-md)', fontSize: '0.78rem', color: '#92600A', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span>⚠</span> <strong>Burnout alert:</strong> Vikram S. has worked 50+ hours this week. AI has flagged for review.
-                </div>
               </div>
             </div>
           </div>
 
-          {/**/}
-          <div className={`module-showcase ${activeModule === "finance" ? "active" : ""}`} id="mod-finance">
+          {/* Pillar 4: Payroll & Compensation */}
+          <div className={`module-showcase ${activePillar === 'payroll' ? 'active' : ''}`}>
             <div className="module-info">
-              <h3>Finance &amp; Billing</h3>
-              <p>Track hours, prepare payroll data, and manage client billing — all synced with your workforce records.</p>
+              <h3>Payroll &amp; Compensation</h3>
+              <p>Manage salary, run payroll and generate payslips — all connected to your employee and attendance records so there are no data gaps.</p>
               <ul className="module-features">
-                <li>Automated payroll data compilation and review</li>
-                <li>Client billing tied directly to project hours</li>
-                <li>Invoice tracking and payment status</li>
-                <li>Expense management and approvals</li>
-                <li>Contractor payment reconciliation</li>
+                <li>Payroll processing and salary management</li>
+                <li>Payslip generation for every employee</li>
+                <li>Salary structure and compensation records</li>
+                <li>Payroll connected to attendance and leave data</li>
+                <li>Payroll history and audit trail</li>
               </ul>
             </div>
             <div className="module-screen">
               <div className="screen-topbar">
                 <div className="screen-dots"><div className="screen-dot" style={{ background: '#FF5F57' }}></div><div className="screen-dot" style={{ background: '#FEBC2E' }}></div><div className="screen-dot" style={{ background: '#28C840' }}></div></div>
-                <span className="screen-title">TalentOps — Finance Module</span>
+                <span className="screen-title">TalentOps — Payroll &amp; Compensation</span>
               </div>
               <div className="screen-body">
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '16px' }}>
                   <div style={{ background: 'var(--gray-50)', borderRadius: 'var(--radius-md)', padding: '12px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--navy)' }}>₹8.4L</div>
+                    <div style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--navy)' }}>₹18.4L</div>
                     <div style={{ fontSize: '0.7rem', color: 'var(--gray-400)' }}>Payroll This Month</div>
                   </div>
                   <div style={{ background: 'var(--blue-light)', borderRadius: 'var(--radius-md)', padding: '12px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--blue-brand)' }}>₹12.2L</div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--blue-brand)' }}>Client Billed</div>
+                    <div style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--blue-brand)' }}>42</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--blue-brand)' }}>Payslips Generated</div>
                   </div>
                   <div style={{ background: '#E0F7F5', borderRadius: 'var(--radius-md)', padding: '12px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#0D7A5F' }}>5 Pending</div>
-                    <div style={{ fontSize: '0.7rem', color: '#0D7A5F' }}>Invoices</div>
+                    <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#0D7A5F' }}>Processed</div>
+                    <div style={{ fontSize: '0.7rem', color: '#0D7A5F' }}>Status</div>
                   </div>
                 </div>
                 <table className="mini-table">
-                  <tr><th>Client</th><th>Hours</th><th>Amount</th><th>Status</th></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>TechCorp India</strong></td><td>142h</td><td>₹3.6L</td><td><span className="mini-badge badge-green">Paid</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>MedPlus Clinics</strong></td><td>88h</td><td>₹2.1L</td><td><span className="mini-badge badge-amber">Pending</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>LegalEdge LLP</strong></td><td>60h</td><td>₹1.8L</td><td><span className="mini-badge badge-blue">Generated</span></td></tr>
+                  <tr><th>Employee</th><th>Basic</th><th>Net Pay</th><th>Payslip</th></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Ananya R.</strong></td><td>₹85,000</td><td>₹72,400</td><td><span className="mini-badge badge-green">Sent</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Siddharth P.</strong></td><td>₹65,000</td><td>₹55,200</td><td><span className="mini-badge badge-green">Sent</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Kavitha M.</strong></td><td>₹55,000</td><td>₹47,100</td><td><span className="mini-badge badge-amber">Pending</span></td></tr>
                 </table>
               </div>
             </div>
           </div>
 
-          {/**/}
-          <div className={`module-showcase ${activeModule === "hiring" ? "active" : ""}`} id="mod-hiring">
+          {/* Pillar 5: Performance Management */}
+          <div className={`module-showcase ${activePillar === 'performance' ? 'active' : ''}`}>
             <div className="module-info">
-              <h3>Hiring Pipeline</h3>
-              <p>Manage every open role from job posting to offer letter — with capacity data driving every hiring decision.</p>
+              <h3>Performance Management</h3>
+              <p>Set goals, run reviews and track performance across your team — so people grow and your organization gets stronger over time.</p>
               <ul className="module-features">
-                <li>Capacity-based hiring recommendations</li>
-                <li>Candidate tracking through every stage</li>
-                <li>Interview scheduling and coordination</li>
-                <li>Offer management and onboarding handoff</li>
-                <li>Hiring gap alerts before they become critical</li>
+                <li>Goal setting and OKR tracking</li>
+                <li>Performance review cycles</li>
+                <li>Employee performance records</li>
+                <li>Manager and peer review workflows</li>
+                <li>Performance visibility across the organization</li>
               </ul>
             </div>
             <div className="module-screen">
               <div className="screen-topbar">
                 <div className="screen-dots"><div className="screen-dot" style={{ background: '#FF5F57' }}></div><div className="screen-dot" style={{ background: '#FEBC2E' }}></div><div className="screen-dot" style={{ background: '#28C840' }}></div></div>
-                <span className="screen-title">TalentOps — Hiring Pipeline</span>
+                <span className="screen-title">TalentOps — Performance Management</span>
               </div>
               <div className="screen-body">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)' }}>Open Roles</div>
-                  <span className="mini-badge badge-red">2 Critical Gaps</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)' }}>Q3 Review Cycle <span className="mini-badge badge-blue" style={{ marginLeft: '6px' }}>In Progress</span></div>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--gray-400)' }}>28 / 42 Completed</span>
                 </div>
                 <table className="mini-table">
-                  <tr><th>Role</th><th>Stage</th><th>Candidates</th><th>Priority</th></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>Senior Developer</strong></td><td><span className="mini-badge badge-amber">Interview</span></td><td>4</td><td><span className="mini-badge badge-red">High</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>UX Designer</strong></td><td><span className="mini-badge badge-blue">Screening</span></td><td>11</td><td><span className="mini-badge badge-amber">Medium</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>Ops Coordinator</strong></td><td><span className="mini-badge badge-green">Offer Sent</span></td><td>1</td><td><span className="mini-badge badge-green">Filled</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>Data Analyst</strong></td><td><span className="mini-badge" style={{ background: 'var(--gray-100)', color: 'var(--gray-600)' }}>Sourcing</span></td><td>2</td><td><span className="mini-badge badge-red">Urgent</span></td></tr>
+                  <tr><th>Employee</th><th>Goal Progress</th><th>Review Status</th><th>Rating</th></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Ananya R.</strong></td><td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '90%', background: 'var(--teal)' }}></div></div></div></td><td><span className="mini-badge badge-green">Complete</span></td><td>Exceeds</td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Siddharth P.</strong></td><td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '60%' }}></div></div></div></td><td><span className="mini-badge badge-amber">In Review</span></td><td>Meets</td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Vikram S.</strong></td><td><div style={{ width: '80px' }}><div className="mini-prog-bar"><div className="mini-prog-fill" style={{ width: '45%' }}></div></div></div></td><td><span className="mini-badge badge-amber">Pending</span></td><td>—</td></tr>
                 </table>
               </div>
             </div>
           </div>
 
-          {/**/}
-          <div className={`module-showcase ${activeModule === "comms" ? "active" : ""}`} id="mod-comms">
+          {/* Pillar 6: Reports & Analytics */}
+          <div className={`module-showcase ${activePillar === 'analytics' ? 'active' : ''}`}>
             <div className="module-info">
-              <h3>Communications</h3>
-              <p>Centralize all employee and client communication — announcements, requests, updates, and notifications in one place.</p>
+              <h3>Reports &amp; Analytics</h3>
+              <p>Get clear visibility into your workforce — headcount, payroll, performance and operational data in one place, without building reports from scratch.</p>
               <ul className="module-features">
-                <li>Broadcast announcements to teams or individuals</li>
-                <li>Employee request and ticket management</li>
-                <li>Automated notifications for key events</li>
-                <li>Client communication logs and updates</li>
-                <li>Escalation tracking and resolution</li>
+                <li>Workforce reports: headcount, attrition, tenure</li>
+                <li>Payroll reports and compensation summaries</li>
+                <li>Performance visibility across teams and individuals</li>
+                <li>Attendance and leave reports</li>
+                <li>Operational insights for decision-making</li>
               </ul>
             </div>
             <div className="module-screen">
               <div className="screen-topbar">
                 <div className="screen-dots"><div className="screen-dot" style={{ background: '#FF5F57' }}></div><div className="screen-dot" style={{ background: '#FEBC2E' }}></div><div className="screen-dot" style={{ background: '#28C840' }}></div></div>
-                <span className="screen-title">TalentOps — Communications</span>
+                <span className="screen-title">TalentOps — Reports &amp; Analytics</span>
               </div>
               <div className="screen-body">
-                <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--navy)', marginBottom: '14px' }}>Recent Notifications <span className="mini-badge badge-red" style={{ marginLeft: '4px' }}>3 New</span></div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <div style={{ background: 'var(--blue-light)', borderRadius: 'var(--radius-md)', padding: '10px 12px', fontSize: '0.78rem' }}>
-                    <div style={{ fontWeight: '600', color: 'var(--navy)' }}>Leave Approved — Siddharth P.</div>
-                    <div style={{ color: 'var(--gray-400)', fontSize: '0.72rem', marginTop: '2px' }}>AI Manager approved 2-day leave request • 10 min ago</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
+                  <div style={{ background: 'var(--gray-50)', borderRadius: 'var(--radius-md)', padding: '12px' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--gray-400)', marginBottom: '4px' }}>Total Headcount</div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--navy)' }}>42</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--teal)' }}>↑ +3 this quarter</div>
                   </div>
-                  <div style={{ background: '#FEF3DC', borderRadius: 'var(--radius-md)', padding: '10px 12px', fontSize: '0.78rem' }}>
-                    <div style={{ fontWeight: '600', color: 'var(--navy)' }}>⚠ Ticket Escalated</div>
-                    <div style={{ color: 'var(--gray-400)', fontSize: '0.72rem', marginTop: '2px' }}>Payroll discrepancy escalated to Expert team • 1 hr ago</div>
-                  </div>
-                  <div style={{ background: '#E0F7F5', borderRadius: 'var(--radius-md)', padding: '10px 12px', fontSize: '0.78rem' }}>
-                    <div style={{ fontWeight: '600', color: 'var(--navy)' }}>Announcement Sent</div>
-                    <div style={{ color: 'var(--gray-400)', fontSize: '0.72rem', marginTop: '2px' }}>Q2 performance review cycle begins June 10 • 3 hr ago</div>
-                  </div>
-                  <div style={{ background: 'var(--gray-50)', borderRadius: 'var(--radius-md)', padding: '10px 12px', fontSize: '0.78rem' }}>
-                    <div style={{ fontWeight: '600', color: 'var(--navy)' }}>New Hire Onboarded</div>
-                    <div style={{ color: 'var(--gray-400)', fontSize: '0.72rem', marginTop: '2px' }}>Priya S. has completed onboarding checklist • 5 hr ago</div>
+                  <div style={{ background: 'var(--blue-light)', borderRadius: 'var(--radius-md)', padding: '12px' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--blue-brand)', marginBottom: '4px' }}>Monthly Payroll</div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--blue-brand)' }}>₹18.4L</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--blue-brand)' }}>↑ +5% vs last month</div>
                   </div>
                 </div>
+                <table className="mini-table">
+                  <tr><th>Report</th><th>Period</th><th>Status</th></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Headcount Report</strong></td><td>Q3 2026</td><td><span className="mini-badge badge-green">Ready</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Payroll Summary</strong></td><td>July 2026</td><td><span className="mini-badge badge-green">Ready</span></td></tr>
+                  <tr><td><strong style={{ color: 'var(--navy)' }}>Attrition Report</strong></td><td>H1 2026</td><td><span className="mini-badge badge-amber">Generating</span></td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── TALENTOPS HIRING AGENCY ── */}
+      <section className="hiring-agency-section" id="hiring-agency">
+        <div className="container">
+          <div className="hiring-agency-inner">
+            <div className="hiring-agency-left">
+              <div className="section-tag" style={{ background: 'rgba(27,107,245,0.15)', color: 'var(--blue-mid)' }}>TalentOps Hiring Agency</div>
+              <h2 className="section-title" style={{ color: 'var(--white)' }}>We Don't Just Give You the Platform — We Help You Build the Workforce.</h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '32px', maxWidth: '480px' }}>
+                TalentOps Hiring Agency helps organizations source and hire the right talent. It complements the TalentOps platform — we help you build your workforce, then you operate and manage it through TalentOps.
+              </p>
+              <div className="hiring-distinction">
+                <div className="distinction-pill">
+                  <span className="distinction-label">Platform</span>
+                  <span className="distinction-desc">Operate &amp; manage your workforce</span>
+                </div>
+                <div className="distinction-connector">+</div>
+                <div className="distinction-pill distinction-pill-gold">
+                  <span className="distinction-label">Hiring Agency</span>
+                  <span className="distinction-desc">Build your workforce</span>
+                </div>
+              </div>
+              <Link to="/request-demo" className="btn btn-primary" style={{ marginTop: '32px', display: 'inline-flex' }}>Talk to Our Hiring Team →</Link>
+            </div>
+            <div className="hiring-agency-right">
+              <div className="hiring-flow">
+                {[
+                  { num: '01', title: 'Tell us who you need', desc: 'Share the role, requirements and timeline' },
+                  { num: '02', title: 'Understand', desc: 'We map the role against your organization context' },
+                  { num: '03', title: 'Source', desc: 'We identify and approach relevant candidates' },
+                  { num: '04', title: 'Screen & Shortlist', desc: 'We evaluate and present the best-fit candidates' },
+                  { num: '05', title: 'Interview', desc: 'You interview the shortlisted candidates' },
+                  { num: '06', title: 'Hire', desc: 'Select, offer and bring the candidate on board' },
+                  { num: '07', title: 'Operate through TalentOps', desc: 'Manage the new hire within the TalentOps platform' },
+                ].map((step, i) => (
+                  <div key={i} className="hiring-step">
+                    <div className="hiring-step-num">{step.num}</div>
+                    <div className="hiring-step-content">
+                      <div className="hiring-step-title">{step.title}</div>
+                      <div className="hiring-step-desc">{step.desc}</div>
+                    </div>
+                    {i < 6 && <div className="hiring-step-line"></div>}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* MARQUEE SECTION */}
-      <div className="marquee-section">
-        <div className="marquee-track">
-          <div className="marquee-item"><span className="marquee-dot"></span>Task Management</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Payroll Automation</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Attendance Tracking</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Hiring Workflows</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Employee Onboarding</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Task Management</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Payroll Automation</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Attendance Tracking</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Hiring Workflows</div>
-          <div className="marquee-item"><span className="marquee-dot"></span>Employee Onboarding</div>
-        </div>
-      </div>
-
-      {/* Problem Diagnostic — replaces old pain section */}
-
-      {/**/}
-      <section className="industries-section" id="industries">
+      {/* ── WHO IS IT FOR ── */}
+      <section className="industries-section" id="who">
         <div className="container">
           <div className="section-head-center">
-            <div className="section-tag">Industries</div>
-            <h2 className="section-title">Built for Firms Where People Are the Product</h2>
-            <p className="section-sub">TalentOps is purpose-built for professional services, tech, and knowledge-driven businesses managing complex contractor setups.</p>
+            <div className="section-tag">Who It's For</div>
+            <h2 className="section-title">Built for Growing Professional-Service Organizations</h2>
+            <p className="section-sub">TalentOps is designed for businesses where people are the product — organizations that need structured people operations as they scale.</p>
           </div>
           <div className="industry-grid">
-            <div className="industry-card industry-card-bg" style={{ backgroundImage: 'url(/images/tech_bg.png)' }}>
-              <div className="industry-icon">💻</div>
-              <h3>Technology &amp; Software</h3>
-              <p>Manage engineers, contractors, and product teams across sprint cycles and project deliverables.</p>
-            </div>
-            <div className="industry-card industry-card-bg" style={{ backgroundImage: 'url(/images/legal_bg.png)' }}>
-              <div className="industry-icon">⚖️</div>
-              <h3>Legal &amp; Consulting</h3>
-              <p>Track billable hours, client assignments, and partner utilization across practice areas.</p>
-            </div>
-            <div className="industry-card industry-card-bg" style={{ backgroundImage: 'url(/images/medical_bg.png)' }}>
-              <div className="industry-icon">🏥</div>
-              <h3>Medical &amp; Healthcare</h3>
-              <p>Manage shift scheduling, compliance requirements, and multi-location staff operations.</p>
-            </div>
-            <div className="industry-card industry-card-bg" style={{ backgroundImage: 'url(/images/startup_bg.png)' }}>
-              <div className="industry-icon">📈</div>
-              <h3>Scaling Startups</h3>
-              <p>Build operational discipline from day one — so your processes scale as fast as your team does.</p>
+            {[
+              { icon: '💻', title: 'IT & Software Companies', desc: 'Manage engineers, contractors and product teams across projects and sprint cycles.' },
+              { icon: '📊', title: 'Consulting Firms', desc: 'Track people utilization, client assignments and billable engagement.' },
+              { icon: '🎯', title: 'Digital & Marketing Agencies', desc: 'Manage creative teams, freelancers and project-based workforce.' },
+              { icon: '💼', title: 'Financial & Business Services', desc: 'Operate compliance-aware, structured people management.' },
+              { icon: '🎓', title: 'Education & Training', desc: 'Manage faculty, instructors and administrative staff seamlessly.' },
+              { icon: '🏥', title: 'Healthcare Organizations', desc: 'Shift management, compliance and multi-location staff operations.' },
+              { icon: '⚖️', title: 'Legal & Professional Services', desc: 'Billable hour tracking, matter assignment and team management.' },
+              { icon: '📈', title: 'Scaling Startups & SMEs', desc: 'Build operational discipline from day one so your processes scale as fast as your team.' },
+            ].map((item, i) => (
+              <div key={i} className="industry-card">
+                <div className="industry-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="personas-row">
+            <div className="personas-label">TalentOps is used by</div>
+            <div className="personas-list">
+              {['Founders & Business Owners', 'HR Managers & Teams', 'Recruitment Managers', 'Operations Managers', 'Employees'].map((p, i) => (
+                <div key={i} className="persona-chip">{p}</div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/**/}
+      {/* ── RESULTS ── */}
       <section className="results-section" id="results">
         <div className="container">
           <div className="section-head-center">
             <div className="section-tag" style={{ background: 'rgba(27,107,245,0.15)', color: 'var(--blue-mid)' }}>Results</div>
-            <h2 className="section-title">What Happens When You Bring Structure of Talent Ops</h2>
-            <p className="section-sub">Numbers from organizations that moved from reactive chaos to proactive clarity.</p>
+            <h2 className="section-title">What Happens When You Bring Structure to Talent Operations</h2>
+            <p className="section-sub">Outcomes from organizations that moved from disconnected tools to one connected platform.</p>
           </div>
           <div className="metrics-grid">
             <div className="metric-card">
@@ -399,74 +508,79 @@ export function LandingPage() {
             </div>
             <div className="metric-card">
               <div className="metric-num">3×</div>
-              <div className="metric-label">Better retention rates</div>
+              <div className="metric-label">Better talent retention</div>
             </div>
             <div className="metric-card">
               <div className="metric-num">65%</div>
-              <div className="metric-label">More confident managers</div>
+              <div className="metric-label">Reduction in HR admin time</div>
             </div>
             <div className="metric-card">
-              <div className="metric-num">25%</div>
-              <div className="metric-label">Higher team productivity</div>
+              <div className="metric-num">100%</div>
+              <div className="metric-label">Payroll on time, every month</div>
             </div>
           </div>
           <TestimonialsSection />
         </div>
       </section>
 
-      {/**/}
-      <section className="why-section" id="why">
+      {/* ── WHY TALENTOPS ── */}
+      <section className="why-section" id="about">
         <div className="container">
           <div className="why-grid">
             <div>
               <div className="section-tag">Why TalentOps</div>
-              <h2 className="section-title">We Don't Just Advise — We Build, Implement, and Optimize Alongside You.</h2>
+              <h2 className="section-title">Not Just Another HRMS. A Platform That Operates Your Talent.</h2>
               <div className="why-list">
                 <div className="why-item">
-                  <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></div>
+                  <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></div>
                   <div>
-                    <h4>Deep talent operations expertise — not generic HR advice</h4>
-                    <p>We understand the operational reality of running people at scale, not just the theory.</p>
+                    <h4>The complete employee lifecycle in one platform</h4>
+                    <p>From attracting talent to measuring performance — no switching between systems.</p>
                   </div>
                 </div>
                 <div className="why-item">
-                  <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg></div>
+                  <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
                   <div>
-                    <h4>Systems built to scale — not quick fixes</h4>
-                    <p>What we implement at 20 people still works at 200. Architecture matters from day one.</p>
+                    <h4>All six modules are live and connected</h4>
+                    <p>Talent Acquisition, Employee Management, Workforce Ops, Payroll, Performance, Analytics — all active.</p>
                   </div>
                 </div>
                 <div className="why-item">
                   <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
                   <div>
-                    <h4>Hands-on implementation — not just strategy documents</h4>
-                    <p>We work inside your operations, not just advise from the outside.</p>
+                    <h4>Hiring Agency + Platform in one ecosystem</h4>
+                    <p>We help you build your workforce through the agency and operate it through the platform.</p>
                   </div>
                 </div>
                 <div className="why-item">
                   <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></div>
                   <div>
-                    <h4>Data-driven insights that get better over time</h4>
-                    <p>The AI learns your organization's patterns and continuously improves its recommendations.</p>
+                    <h4>Built for growing organizations</h4>
+                    <p>Designed for startups, SMEs and professional-service firms that need real structure without enterprise complexity.</p>
                   </div>
                 </div>
               </div>
             </div>
             <div>
               <div className="why-card">
-                <div className="why-stat">
-                  <div className="why-stat-num">100+</div>
-                  <div className="why-stat-label">Organizations Transformed</div>
+                <div className="why-brand-story">
+                  <div className="why-brand-name">TALENTOPS</div>
+                  <div className="why-brand-tagline">Operate Your Talent.</div>
                 </div>
                 <hr className="why-stat-divider" />
                 <div className="why-stat">
-                  <div className="why-stat-num">15+</div>
-                  <div className="why-stat-label">Years Combined Experience</div>
+                  <div className="why-stat-num">6</div>
+                  <div className="why-stat-label">Live Product Modules</div>
+                </div>
+                <hr className="why-stat-divider" />
+                <div className="why-stat">
+                  <div className="why-stat-num">1</div>
+                  <div className="why-stat-label">Connected Platform</div>
                 </div>
                 <hr className="why-stat-divider" />
                 <div style={{ textAlign: 'center', paddingTop: '8px' }}>
-                  <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.875rem', lineHeight: '1.7', marginBottom: '20px' }}>From 5-person startups to 500-person enterprises — we've seen the patterns that break teams and built systems to prevent them.</p>
-                  <Link to="/wizard" className="btn btn-white" style={{ display: 'inline-flex' }}>Partner with Us →</Link>
+                  <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.875rem', lineHeight: '1.7', marginBottom: '20px' }}>From 5-person startups to growing enterprises — TalentOps gives your people operations the structure they deserve.</p>
+                  <Link to="/request-demo" className="btn btn-white" style={{ display: 'inline-flex' }}>Book a Demo →</Link>
                 </div>
               </div>
             </div>
@@ -474,55 +588,104 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/**/}
-      <section className="cta-section" id="cta">
+      {/* ── FAQ ── */}
+      <section className="faq-section" id="faq">
         <div className="container">
-          <h2>Build Structure Into Your Growth</h2>
-          <p>Stop managing talent by instinct. Partner with an AI-powered operations team and run your workforce with confidence from day one.</p>
-          <div className="cta-btns">
-            <Link to="/wizard" className="btn btn-white btn-lg">Partner with an AI-Powered Ops Team</Link>
-            <a href="#modules" className="btn btn-outline-white btn-lg">Explore the Platform</a>
+          <div className="section-head-center">
+            <div className="section-tag">FAQ</div>
+            <h2 className="section-title">Common Questions</h2>
+            <p className="section-sub">Everything you need to know about TalentOps before booking a demo.</p>
           </div>
-          <p className="cta-note">30-minute consultation · No commitment required · Trusted by 100+ organizations</p>
+          <div className="faq-list">
+            {faqs.map((faq, i) => (
+              <div key={i} className={`faq-item ${openFaq === i ? 'open' : ''}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                <div className="faq-question">
+                  <span>{faq.q}</span>
+                  <span className="faq-chevron">{openFaq === i ? '−' : '+'}</span>
+                </div>
+                {openFaq === i && (
+                  <div className="faq-answer">{faq.a}</div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/**/}
+      {/* ── FINAL CTA ── */}
+      <section className="cta-section" id="cta">
+        <div className="container">
+          <div className="cta-brand-tag">Operate Your Talent.</div>
+          <h2>Ready to Manage Your Entire Workforce in One Place?</h2>
+          <p>See how TalentOps brings your complete talent lifecycle together — from recruitment to payroll to performance.</p>
+          <div className="cta-btns">
+            <Link to="/request-demo" className="btn btn-white btn-lg">Book a Demo →</Link>
+            <a href="#pillars" className="btn btn-outline-white btn-lg">Explore the Platform</a>
+          </div>
+          <p className="cta-note">30-minute walkthrough · No commitment required · All modules live</p>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
       <footer>
         <div className="footer-inner">
           <div className="footer-top">
             <div className="footer-brand">
               <div className="footer-logo">Talent<span>Ops</span></div>
-              <p className="footer-desc">Clear talent operations for growing teams. We design, build, and optimize your people systems — powered by AI, backed by human expertise.</p>
+              <p className="footer-tagline">Operate Your Talent.</p>
+              <p className="footer-desc">One connected platform for the complete workforce lifecycle — recruitment, employee management, payroll, performance and workforce operations.</p>
             </div>
             <div>
-              <h4>Platform</h4>
+              <h4>Product</h4>
               <ul>
-                <li><a href="#">Task Management</a></li>
-                <li><a href="#">People Operations</a></li>
-                <li><a href="#">Finance &amp; Billing</a></li>
-                <li><a href="#">Hiring Pipeline</a></li>
-                <li><a href="#">Communications</a></li>
+                <li><a href="#pillars">Talent Acquisition</a></li>
+                <li><a href="#pillars">Employee Management</a></li>
+                <li><a href="#pillars">Workforce Operations</a></li>
+                <li><a href="#pillars">Payroll &amp; Compensation</a></li>
+                <li><a href="#pillars">Performance Management</a></li>
+                <li><a href="#pillars">Reports &amp; Analytics</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Solutions</h4>
+              <ul>
+                <li><a href="#who">Startups</a></li>
+                <li><a href="#who">SMEs</a></li>
+                <li><a href="#who">Professional Services</a></li>
+                <li><a href="#who">Growing Teams</a></li>
+                <li><a href="#who">IT &amp; Software</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Hiring</h4>
+              <ul>
+                <li><a href="#hiring-agency">TalentOps Hiring Agency</a></li>
+                <li><a href="#hiring-agency">How It Works</a></li>
+                <li><Link to="/request-demo">Talk to Hiring Team</Link></li>
               </ul>
             </div>
             <div>
               <h4>Company</h4>
               <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Industries</a></li>
-                <li><a href="#">Results</a></li>
-                <li><a href="#">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#">Blog</a></li>
               </ul>
             </div>
             <div>
-              <h4>Connect</h4>
+              <h4>Support</h4>
               <ul>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><Link to="/wizard">Partner with Us</Link></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
               </ul>
             </div>
+          </div>
+          <div className="footer-cta-bar">
+            <span>Ready to operate your talent?</span>
+            <Link to="/request-demo" className="btn btn-primary">Book a Demo →</Link>
           </div>
           <div className="footer-bottom">
             <span>© 2026 TalentOps. All rights reserved.</span>
@@ -530,7 +693,6 @@ export function LandingPage() {
           </div>
         </div>
       </footer>
-
 
     </div>
   );
