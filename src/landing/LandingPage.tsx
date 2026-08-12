@@ -1,14 +1,115 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import GridScan from './components/GridScan';
-import ProblemDiagnostic from './components/ProblemDiagnostic';
-import { TestimonialsSection } from '../components/ui/testimonial-v2';
+import { SharedNavigation } from './components/SharedNavigation';
+import { ProblemDiagnostic } from './components/ProblemDiagnostic';
+import { Magnet, UserPlus, Handshake, Users, DollarSign, Target, TrendingUp, CheckCircle2, ChevronDown } from 'lucide-react';
 import './LandingPage.css';
 
 export function LandingPage() {
   const [activePillar, setActivePillar] = useState('talent-acquisition');
   const [autoRotate, setAutoRotate] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeLifecycleTab, setActiveLifecycleTab] = useState('attract');
+  const [openHiringStep, setOpenHiringStep] = useState<number | null>(0);
+  const [openAboutAccordion, setOpenAboutAccordion] = useState<number | null>(null);
+
+  const lifecycleTabsData = [
+    { id: 'attract', label: 'Attract', icon: <Magnet size={18} strokeWidth={2} /> },
+    { id: 'hire', label: 'Hire', icon: <UserPlus size={18} strokeWidth={2} /> },
+    { id: 'onboard', label: 'Onboard', icon: <Handshake size={18} strokeWidth={2} /> },
+    { id: 'manage', label: 'Manage', icon: <Users size={18} strokeWidth={2} /> },
+    { id: 'pay', label: 'Pay', icon: <DollarSign size={18} strokeWidth={2} /> },
+    { id: 'perform', label: 'Perform', icon: <Target size={18} strokeWidth={2} /> },
+    { id: 'grow', label: 'Grow', icon: <TrendingUp size={18} strokeWidth={2} /> }
+  ];
+
+  const lifecycleContentData: Record<string, any> = {
+    attract: {
+      title: 'Attract & Recruit Top Talent',
+      desc: 'Bring potential talent into the organization with powerful sourcing tools.',
+      features: [
+        'Custom branded career pages',
+        'Multi-board job postings',
+        'Candidate pipeline tracking'
+      ],
+      cardIcon: <Magnet size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Attract Phase',
+      cardDesc: 'Fully integrated into the TalentOps platform.'
+    },
+    hire: {
+      title: 'Hire the Right Candidates',
+      desc: 'Manage the entire hiring process from screening to offer letters seamlessly.',
+      features: [
+        'Interview scheduling & feedback',
+        'Automated candidate communication',
+        'Offer letter generation'
+      ],
+      cardIcon: <UserPlus size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Hire Phase',
+      cardDesc: 'Built to help you make faster, smarter hiring decisions.'
+    },
+    onboard: {
+      title: 'Smooth Employee Onboarding',
+      desc: 'Bring new employees into the organization with structured onboarding flows.',
+      features: [
+        'Digital document collection',
+        'Task assignments for new hires',
+        'Welcome kits and team introductions'
+      ],
+      cardIcon: <Handshake size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Onboard Phase',
+      cardDesc: 'Create a great first impression from day one.'
+    },
+    manage: {
+      title: 'Comprehensive Employee Management',
+      desc: 'Keep employee records, attendance, and daily operations in one secure place.',
+      features: [
+        'Centralized employee database',
+        'Leave and attendance tracking',
+        'Org charts and reporting lines'
+      ],
+      cardIcon: <Users size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Manage Phase',
+      cardDesc: 'The single source of truth for your workforce.'
+    },
+    pay: {
+      title: 'Integrated Payroll & Compensation',
+      desc: 'Process payroll accurately and automatically connected to attendance data.',
+      features: [
+        'Automated salary calculations',
+        'Tax compliance and deductions',
+        'Instant payslip generation'
+      ],
+      cardIcon: <DollarSign size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Pay Phase',
+      cardDesc: 'Payroll that runs on time, every time.'
+    },
+    perform: {
+      title: 'Track and Measure Performance',
+      desc: 'Set goals, run reviews, and ensure your team is aligned and productive.',
+      features: [
+        'Goal and OKR tracking',
+        '360-degree performance reviews',
+        'Continuous feedback loops'
+      ],
+      cardIcon: <Target size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Perform Phase',
+      cardDesc: 'Build a culture of high performance and accountability.'
+    },
+    grow: {
+      title: 'Grow and Develop Your Talent',
+      desc: 'Build a stronger organization by investing in employee growth and learning.',
+      features: [
+        'Learning and development paths',
+        'Skill matrix and gap analysis',
+        'Internal mobility and promotions'
+      ],
+      cardIcon: <TrendingUp size={40} strokeWidth={1.5} color="var(--blue-brand)" />,
+      cardTitle: 'Grow Phase',
+      cardDesc: 'Retain top talent by helping them advance their careers.'
+    }
+  };
 
   const pillars = [
     'talent-acquisition',
@@ -65,20 +166,7 @@ export function LandingPage() {
     <div className="landing-page-wrapper">
 
       {/* ── NAVIGATION ── */}
-      <nav id="nav">
-        <a href="#" className="nav-logo">Talent<span>Ops</span></a>
-        <div className="nav-links">
-          <a href="#pillars">Products</a>
-          <a href="#who">Solutions</a>
-          <a href="#hiring-agency">TalentOps Hiring</a>
-          <a href="#faq">Resources</a>
-          <a href="#about">About</a>
-        </div>
-        <div className="nav-cta">
-          <Link to="/login" className="btn btn-ghost">Login</Link>
-          <Link to="/request-demo" className="btn btn-primary">Book a Demo →</Link>
-        </div>
-      </nav>
+      <SharedNavigation />
 
       {/* ── HERO ── */}
       <section className="hero" id="hero" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -95,10 +183,6 @@ export function LandingPage() {
           noiseIntensity={0.01}
         />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="hero-badge">
-            <div className="dot"></div>
-            Operate Your Talent.
-          </div>
           <h1>From Hiring to High Performance —<br /><em>Manage Your Entire Workforce</em> in One Place.</h1>
           <p>TalentOps brings recruitment, employee management, payroll, performance and workforce operations together in one connected platform built for growing businesses.</p>
           <div className="hero-btns">
@@ -143,24 +227,38 @@ export function LandingPage() {
             <h2 className="section-title">One Continuous Platform. Seven Stages.</h2>
             <p className="section-sub">TalentOps operates your people from the moment you attract talent to the day they grow your organization — without switching between systems.</p>
           </div>
-          <div className="lifecycle-flow">
-            {[
-              { step: '01', label: 'Attract', icon: '📡', desc: 'Bring potential talent into your pipeline' },
-              { step: '02', label: 'Hire', icon: '🤝', desc: 'Manage the hiring process and select candidates' },
-              { step: '03', label: 'Onboard', icon: '🚀', desc: 'Bring new employees into the organization smoothly' },
-              { step: '04', label: 'Manage', icon: '📋', desc: 'Employee records, attendance and daily operations' },
-              { step: '05', label: 'Pay', icon: '💳', desc: 'Payroll, salary and payslip management' },
-              { step: '06', label: 'Perform', icon: '📈', desc: 'Goals, reviews and performance tracking' },
-              { step: '07', label: 'Grow', icon: '🌱', desc: 'Build a stronger, more capable organization' },
-            ].map((item, i) => (
-              <div key={i} className="lifecycle-step">
-                <div className="lifecycle-icon">{item.icon}</div>
-                <div className="lifecycle-num">{item.step}</div>
-                <div className="lifecycle-label">{item.label}</div>
-                <div className="lifecycle-desc">{item.desc}</div>
-                {i < 6 && <div className="lifecycle-arrow">→</div>}
+
+          <div className="lifecycle-dashboard">
+            <div className="lifecycle-tabs">
+              {lifecycleTabsData.map(tab => (
+                <div
+                  key={tab.id}
+                  className={`lifecycle-tab ${activeLifecycleTab === tab.id ? 'active' : ''}`}
+                  onClick={() => setActiveLifecycleTab(tab.id)}
+                >
+                  {tab.icon} {tab.label}
+                </div>
+              ))}
+            </div>
+
+            <div className="lifecycle-content">
+              <div className="lifecycle-info">
+                <h3>{lifecycleContentData[activeLifecycleTab].title}</h3>
+                <p>{lifecycleContentData[activeLifecycleTab].desc}</p>
+                <ul className="lifecycle-features">
+                  {lifecycleContentData[activeLifecycleTab].features.map((feature: string, i: number) => (
+                    <li key={i}><CheckCircle2 size={18} color="#6366f1" /> {feature}</li>
+                  ))}
+                </ul>
               </div>
-            ))}
+              <div className="lifecycle-card">
+                <div className="lifecycle-card-icon-wrapper">
+                  {lifecycleContentData[activeLifecycleTab].cardIcon}
+                </div>
+                <h4>{lifecycleContentData[activeLifecycleTab].cardTitle}</h4>
+                <p>{lifecycleContentData[activeLifecycleTab].cardDesc}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -208,11 +306,13 @@ export function LandingPage() {
                   <span className="mini-badge badge-red">2 Urgent</span>
                 </div>
                 <table className="mini-table">
-                  <tr><th>Role</th><th>Stage</th><th>Candidates</th><th>Priority</th></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>Senior Developer</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Engineering</span></td><td><span className="mini-badge badge-amber">Interview</span></td><td>4</td><td><span className="mini-badge badge-red">High</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>UX Designer</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Product</span></td><td><span className="mini-badge badge-blue">Screening</span></td><td>11</td><td><span className="mini-badge badge-amber">Medium</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>HR Executive</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>People Ops</span></td><td><span className="mini-badge badge-green">Offer Sent</span></td><td>1</td><td><span className="mini-badge badge-green">Filled</span></td></tr>
-                  <tr><td><strong style={{ color: 'var(--navy)' }}>Data Analyst</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Analytics</span></td><td><span className="mini-badge" style={{ background: 'var(--gray-100)', color: 'var(--gray-600)' }}>Sourcing</span></td><td>2</td><td><span className="mini-badge badge-red">Urgent</span></td></tr>
+                  <tbody>
+                    <tr><th>Role</th><th>Stage</th><th>Candidates</th><th>Priority</th></tr>
+                    <tr><td><strong style={{ color: 'var(--navy)' }}>Senior Developer</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Engineering</span></td><td><span className="mini-badge badge-amber">Interview</span></td><td>4</td><td><span className="mini-badge badge-red">High</span></td></tr>
+                    <tr><td><strong style={{ color: 'var(--navy)' }}>UX Designer</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Product</span></td><td><span className="mini-badge badge-blue">Screening</span></td><td>11</td><td><span className="mini-badge badge-amber">Medium</span></td></tr>
+                    <tr><td><strong style={{ color: 'var(--navy)' }}>HR Executive</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>People Ops</span></td><td><span className="mini-badge badge-green">Offer Sent</span></td><td>1</td><td><span className="mini-badge badge-green">Filled</span></td></tr>
+                    <tr><td><strong style={{ color: 'var(--navy)' }}>Data Analyst</strong><br /><span style={{ color: 'var(--gray-400)', fontSize: '0.7rem' }}>Analytics</span></td><td><span className="mini-badge" style={{ background: 'var(--gray-100)', color: 'var(--gray-600)' }}>Sourcing</span></td><td>2</td><td><span className="mini-badge badge-red">Urgent</span></td></tr>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -440,16 +540,94 @@ export function LandingPage() {
                   { num: '06', title: 'Hire', desc: 'Select, offer and bring the candidate on board' },
                   { num: '07', title: 'Operate through TalentOps', desc: 'Manage the new hire within the TalentOps platform' },
                 ].map((step, i) => (
-                  <div key={i} className="hiring-step">
+                  <div 
+                    key={i} 
+                    className={`hiring-step ${openHiringStep === i ? 'active' : ''}`}
+                    onClick={() => setOpenHiringStep(openHiringStep === i ? null : i)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <div className="hiring-step-num">{step.num}</div>
-                    <div className="hiring-step-content">
-                      <div className="hiring-step-title">{step.title}</div>
-                      <div className="hiring-step-desc">{step.desc}</div>
+                    <div className="hiring-step-content" style={{ width: '100%' }}>
+                      <div className="hiring-step-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        {step.title}
+                        <ChevronDown size={18} style={{ color: 'var(--blue-brand)', transform: openHiringStep === i ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }} />
+                      </div>
+                      {openHiringStep === i && (
+                        <div className="hiring-step-desc" style={{ marginTop: '8px' }}>{step.desc}</div>
+                      )}
                     </div>
                     {i < 6 && <div className="hiring-step-line"></div>}
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT TALENTOPS ── */}
+      <section className="about-section" id="about" style={{ padding: '100px 0', background: 'var(--white)' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+          <div className="about-image-wrapper" style={{ height: '100%', minHeight: '650px' }}>
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Team working" style={{ width: '100%', height: '100%', minHeight: '650px', objectFit: 'cover', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }} />
+          </div>
+          <div className="about-content">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <div style={{ height: '2px', width: '30px', background: 'var(--blue-brand)' }}></div>
+              <span style={{ color: 'var(--blue-brand)', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>About TalentOps</span>
+            </div>
+            <h2 style={{ fontSize: '3.2rem', fontWeight: '800', color: 'var(--navy)', lineHeight: '1.1', marginBottom: '24px', fontFamily: 'var(--serif)' }}>
+              Transform your workforce with <br /><span style={{ color: 'var(--blue-brand)' }}>intelligent operations.</span>
+            </h2>
+            <p style={{ color: 'var(--gray-600)', fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '40px' }}>
+              Stop wrestling with fragmented HR tools. TalentOps unifies your entire employee lifecycle—from seamless onboarding to performance management—into one intuitive platform. Empower your team with automation and insights that let you focus on what truly matters: your people.
+            </p>
+            
+            <div className="about-accordion">
+              {[
+                { title: 'Eliminate manual data entry', desc: 'Automate repetitive tasks and let your team focus on strategic initiatives rather than paperwork.' },
+                { title: 'Boost employee engagement', desc: 'Create a seamless experience that keeps your team connected, motivated, and aligned with company goals.' },
+                { title: 'Make data-driven decisions', desc: 'Access real-time analytics and insights to optimize your workforce operations.' }
+              ].map((item, i) => (
+                <div 
+                  key={i} 
+                  style={{ 
+                    border: '1.5px solid', 
+                    borderRadius: '12px', 
+                    padding: '20px 24px', 
+                    marginBottom: '16px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s',
+                    boxShadow: openAboutAccordion === i ? '0 12px 30px rgba(0,0,0,0.06)' : 'none',
+                    borderColor: openAboutAccordion === i ? 'var(--blue-brand)' : 'var(--gray-200)',
+                    background: openAboutAccordion === i ? '#f8fafc' : 'var(--white)'
+                  }}
+                  onClick={() => setOpenAboutAccordion(openAboutAccordion === i ? null : i)}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <div style={{ 
+                        width: '36px', height: '36px', 
+                        borderRadius: '50%', 
+                        background: 'var(--blue-light)', 
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: 'var(--blue-brand)'
+                      }}>
+                        <CheckCircle2 size={18} strokeWidth={3} />
+                      </div>
+                      <span style={{ fontWeight: '700', color: 'var(--navy)', fontSize: '1.05rem' }}>{item.title}</span>
+                    </div>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--gray-400)', fontWeight: '700', letterSpacing: '0.05em' }}>
+                      {openAboutAccordion === i ? 'CLICK TO CLOSE' : 'CLICK TO OPEN'}
+                    </span>
+                  </div>
+                  {openAboutAccordion === i && (
+                    <div style={{ marginTop: '16px', paddingLeft: '52px', color: 'var(--gray-600)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                      {item.desc}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -519,7 +697,6 @@ export function LandingPage() {
               <div className="metric-label">Payroll on time, every month</div>
             </div>
           </div>
-          <TestimonialsSection />
         </div>
       </section>
 
@@ -531,28 +708,28 @@ export function LandingPage() {
               <div className="section-tag">Why TalentOps</div>
               <h2 className="section-title">Not Just Another HRMS. A Platform That Operates Your Talent.</h2>
               <div className="why-list">
-                <div className="why-item">
+                <div className="why-item color-1">
                   <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></div>
                   <div>
                     <h4>The complete employee lifecycle in one platform</h4>
                     <p>From attracting talent to measuring performance — no switching between systems.</p>
                   </div>
                 </div>
-                <div className="why-item">
+                <div className="why-item color-2">
                   <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
                   <div>
                     <h4>All six modules are live and connected</h4>
                     <p>Talent Acquisition, Employee Management, Workforce Ops, Payroll, Performance, Analytics — all active.</p>
                   </div>
                 </div>
-                <div className="why-item">
+                <div className="why-item color-3">
                   <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
                   <div>
                     <h4>Hiring Agency + Platform in one ecosystem</h4>
                     <p>We help you build your workforce through the agency and operate it through the platform.</p>
                   </div>
                 </div>
-                <div className="why-item">
+                <div className="why-item color-4">
                   <div className="why-icon"><svg fill="none" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></div>
                   <div>
                     <h4>Built for growing organizations</h4>
@@ -565,7 +742,6 @@ export function LandingPage() {
               <div className="why-card">
                 <div className="why-brand-story">
                   <div className="why-brand-name">TALENTOPS</div>
-                  <div className="why-brand-tagline">Operate Your Talent.</div>
                 </div>
                 <hr className="why-stat-divider" />
                 <div className="why-stat">
@@ -615,7 +791,6 @@ export function LandingPage() {
       {/* ── FINAL CTA ── */}
       <section className="cta-section" id="cta">
         <div className="container">
-          <div className="cta-brand-tag">Operate Your Talent.</div>
           <h2>Ready to Manage Your Entire Workforce in One Place?</h2>
           <p>See how TalentOps brings your complete talent lifecycle together — from recruitment to payroll to performance.</p>
           <div className="cta-btns">
@@ -632,7 +807,6 @@ export function LandingPage() {
           <div className="footer-top">
             <div className="footer-brand">
               <div className="footer-logo">Talent<span>Ops</span></div>
-              <p className="footer-tagline">Operate Your Talent.</p>
               <p className="footer-desc">One connected platform for the complete workforce lifecycle — recruitment, employee management, payroll, performance and workforce operations.</p>
             </div>
             <div>

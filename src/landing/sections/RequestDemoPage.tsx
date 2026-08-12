@@ -103,7 +103,6 @@ export function RequestDemoPage() {
         {/* Left: Context */}
         <div className="demo-left">
           <div className="demo-logo">Talent<span>Ops</span></div>
-          <div className="demo-brand-tag">Operate Your Talent.</div>
           <h1 className="demo-heading">Book a Demo</h1>
           <p className="demo-subtext">
             See how TalentOps manages your complete workforce lifecycle — from recruiting to payroll to performance — in one connected platform.

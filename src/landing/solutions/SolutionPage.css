@@ -1,0 +1,245 @@
+/* SolutionPage.css */
+.solution-page-wrapper {
+  font-family: var(--sans);
+  background-color: var(--white);
+  min-height: 100vh;
+}
+
+.solution-page-wrapper .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* Hero Section */
+.solution-hero {
+  padding: 140px 0 80px;
+  text-align: center;
+}
+
+.solution-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid;
+  margin-bottom: 24px;
+}
+
+.solution-hero-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.solution-hero-title {
+  font-family: var(--sans);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: -0.02em;
+}
+
+.solution-hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-600);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.solution-hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.solution-hero-cta .btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.solution-hero-cta .btn-solid {
+  color: var(--white);
+}
+
+.solution-hero-cta .btn-solid:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.solution-hero-cta .btn-outline {
+  background: transparent;
+  border: 1px solid;
+}
+
+.solution-hero-cta .btn-outline:hover {
+  background: var(--gray-50);
+  transform: translateY(-2px);
+}
+
+/* Features Section */
+.solution-features {
+  padding: 80px 0 100px;
+  background: var(--gray-50);
+}
+
+.solution-features-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.solution-features-header h2 {
+  font-size: 2.2rem;
+  color: var(--navy);
+  margin-bottom: 16px;
+  font-family: var(--sans);
+}
+
+.solution-features-header p {
+  color: var(--gray-600);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.solution-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.solution-features-grid.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .solution-features-grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .solution-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .solution-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .solution-hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+.container-wide {
+  max-width: 1440px !important;
+}
+
+.solution-feature-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 44px 40px;
+  min-height: 340px;
+  transition: all 0.3s ease;
+}
+
+.solution-feature-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+.solution-feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.solution-feature-card h3 {
+  font-size: 1.1rem;
+  color: #000;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.solution-feature-card p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* Bottom Value Section */
+.solution-bottom {
+  padding: 100px 0;
+  background: #0f172a; /* Dark navy */
+  color: var(--white);
+}
+
+.solution-bottom.light {
+  background: var(--gray-50);
+  color: var(--navy);
+}
+
+.solution-bottom.light .solution-bottom-content p {
+  color: var(--gray-600);
+}
+
+.solution-bottom.light .solution-checklist li {
+  color: var(--gray-700);
+}
+
+.solution-bottom-centered {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.solution-bottom-content h2 {
+  font-size: 3rem;
+  font-family: var(--sans);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.solution-bottom-content p {
+  color: #94a3b8;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.solution-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.solution-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 1.25rem;
+  color: #cbd5e1;
+}

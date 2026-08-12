@@ -173,7 +173,7 @@ export function TestimonialsSection() {
         </div>
 
         <div 
-          className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[740px] overflow-hidden"
+          className="flex justify-center gap-6 mt-10 max-h-[740px] overflow-hidden"
           role="region"
           aria-label="Scrolling Testimonials"
         >

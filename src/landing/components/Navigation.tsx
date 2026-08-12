@@ -26,8 +26,8 @@ export function Navigation({ isDark = false }: NavigationProps) {
     const isSolid = scrolled || isDark;
 
     const navItems = [
+        { name: 'Solutions', href: '/#hero' },
         { name: 'Products', href: '/#pillars' },
-        { name: 'Solutions', href: '/#who' },
         { name: 'TalentOps Hiring', href: '/#hiring-agency' },
         { name: 'Resources', href: '/#faq' },
         { name: 'About', href: '/#about' },
