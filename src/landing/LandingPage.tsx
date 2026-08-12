@@ -11,6 +11,7 @@ export function LandingPage() {
   const [autoRotate, setAutoRotate] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeLifecycleTab, setActiveLifecycleTab] = useState('attract');
+  const [autoRotateLifecycle, setAutoRotateLifecycle] = useState(true);
   const [openHiringStep, setOpenHiringStep] = useState<number | null>(0);
   const [openAboutAccordion, setOpenAboutAccordion] = useState<number | null>(null);
 
@@ -131,6 +132,18 @@ export function LandingPage() {
     return () => clearInterval(timer);
   }, [autoRotate]);
 
+  useEffect(() => {
+    if (!autoRotateLifecycle) return;
+    const timer = setInterval(() => {
+      setActiveLifecycleTab(prev => {
+        const ids = lifecycleTabsData.map(t => t.id);
+        const nextIndex = (ids.indexOf(prev) + 1) % ids.length;
+        return ids[nextIndex];
+      });
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [autoRotateLifecycle]);
+
   const faqs = [
     {
       q: 'What is TalentOps?',
@@ -228,7 +241,11 @@ export function LandingPage() {
             <p className="section-sub">TalentOps operates your people from the moment you attract talent to the day they grow your organization — without switching between systems.</p>
           </div>
 
-          <div className="lifecycle-dashboard">
+          <div 
+            className="lifecycle-dashboard"
+            onMouseEnter={() => setAutoRotateLifecycle(false)}
+            onMouseLeave={() => setAutoRotateLifecycle(true)}
+          >
             <div className="lifecycle-tabs">
               {lifecycleTabsData.map(tab => (
                 <div

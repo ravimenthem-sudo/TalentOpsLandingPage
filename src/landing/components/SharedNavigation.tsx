@@ -28,12 +28,12 @@ export function SharedNavigation() {
         <div className="nav-dropdown">
           <div className="nav-dropdown-trigger">
             <a href="/#hero">
-              <span style={{ color: openDropdown === 'solutions' ? 'var(--blue-brand)' : 'inherit' }}>Solutions</span> 
+              <span style={{ color: openDropdown === 'solutions' ? 'var(--white)' : 'inherit' }}>Solutions</span> 
             </a>
             <svg 
               className={`nav-chevron ${openDropdown === 'solutions' ? 'open' : ''}`} 
               width="14" height="14" viewBox="0 0 24 24" fill="none" 
-              stroke={openDropdown === 'solutions' ? 'var(--blue-brand)' : 'currentColor'} 
+              stroke={openDropdown === 'solutions' ? 'var(--white)' : 'rgba(255, 255, 255, 0.85)'} 
               strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
               onClick={(e) => { e.stopPropagation(); setOpenDropdown(openDropdown === 'solutions' ? null : 'solutions'); }}
               style={{ cursor: 'pointer' }}
@@ -50,12 +50,12 @@ export function SharedNavigation() {
         <div className="nav-dropdown">
           <div className="nav-dropdown-trigger">
             <a href="/#pillars">
-              <span style={{ color: openDropdown === 'products' ? 'var(--blue-brand)' : 'inherit' }}>Products</span>
+              <span style={{ color: openDropdown === 'products' ? 'var(--white)' : 'inherit' }}>Products</span>
             </a>
             <svg 
               className={`nav-chevron ${openDropdown === 'products' ? 'open' : ''}`} 
               width="14" height="14" viewBox="0 0 24 24" fill="none" 
-              stroke={openDropdown === 'products' ? 'var(--blue-brand)' : 'currentColor'} 
+              stroke={openDropdown === 'products' ? 'var(--white)' : 'rgba(255, 255, 255, 0.85)'} 
               strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
               onClick={(e) => { e.stopPropagation(); setOpenDropdown(openDropdown === 'products' ? null : 'products'); }}
               style={{ cursor: 'pointer' }}

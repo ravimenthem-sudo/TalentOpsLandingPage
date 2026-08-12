@@ -53,9 +53,9 @@
   width: 100%;
   max-width: none;
   z-index: 9999;
-  background: var(--white);
+  background: #0B132B; /* Dark navy from screenshot */
   border: none;
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0;
   padding: 0 5%;
   height: 76px;
@@ -70,7 +70,7 @@
   font-family: var(--sans);
   font-weight: 700;
   font-size: 1.4rem;
-  color: var(--navy);
+  color: var(--white);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -98,14 +98,14 @@
 
 .landing-page-wrapper .nav-links a {
   text-decoration: none;
-  color: var(--gray-600);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
   font-weight: 600;
   transition: color .2s;
 }
 
 .landing-page-wrapper .nav-links a:hover {
-  color: var(--blue-brand);
+  color: var(--white);
 }
 
 .landing-page-wrapper .nav-dropdown {
@@ -124,8 +124,8 @@
 .landing-page-wrapper .nav-dropdown-trigger:hover,
 .landing-page-wrapper .nav-dropdown-trigger:hover span,
 .landing-page-wrapper .nav-dropdown-trigger:hover svg {
-  color: var(--blue-brand) !important;
-  stroke: var(--blue-brand) !important;
+  color: var(--white) !important;
+  stroke: var(--white) !important;
 }
 
 .landing-page-wrapper .nav-chevron {
@@ -576,26 +576,51 @@
 .landing-page-wrapper .module-tabs {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   margin: 32px 0 40px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 4px;
+  justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .landing-page-wrapper .module-tabs {
+    justify-content: center;
+  }
+}
+
+.landing-page-wrapper .module-tab:last-child {
+  margin-right: 16px; /* Extra space to prevent right-edge clipping on scroll */
+}
+
+.landing-page-wrapper .module-tab:first-child {
+  margin-left: 4px;
+}
+
+.landing-page-wrapper .module-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .landing-page-wrapper .module-tab {
-  padding: 9px 18px;
+  padding: 6px 12px;
   border-radius: var(--radius-md);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 500;
   cursor: pointer;
   border: 1.5px solid var(--gray-200);
   background: var(--white);
-  color: var(--gray-600);
+  color: #000000; /* changed to black */
   transition: all .2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .landing-page-wrapper .module-tab.active,
 .landing-page-wrapper .module-tab:hover {
   background: var(--blue-brand);
-  color: var(--white);
+  color: #000000;
   border-color: var(--blue-brand);
 }
 
@@ -1369,8 +1394,9 @@
 .landing-page-wrapper .lifecycle-dashboard {
   background: #0f172a;
   border-radius: var(--radius-xl);
-  padding: 48px 64px;
-  max-width: 1150px;
+  padding: 64px 80px;
+  max-width: 1280px;
+  min-height: 560px;
   margin: 0 auto;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255,255,255,0.05);
