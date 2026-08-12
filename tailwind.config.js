@@ -10,33 +10,91 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                display: ['var(--font-playfair)'],
-                elegant: ['var(--font-cormorant)'],
-                body: ['var(--font-inter)'],
-                accent: ['var(--font-space)'],
-                redhat: ['var(--font-redhat)'],
-                leckerli: ['var(--font-leckerli)'],
-                satisfy: ['var(--font-satisfy)'],
-                heading: ['var(--font-playfair)'],
+                sans: ['Inter', 'sans-serif'],
+                display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+                body: ['Inter', 'sans-serif'],
             },
             colors: {
-                ink: '#0A0A0B',
-                'ink-soft': '#1A1A1C',
-                paper: '#F8F7F4',
-                'paper-warm': '#FAF8F5',
-                graphite: '#2D2D2F',
-                'graphite-light': '#4A4A4D',
-                mist: '#E8E6E3',
-                'accent-violet': '#7C3AED',
-                'accent-violet-deep': '#5B21B6',
-                'accent-coral': '#F97066',
-                'accent-coral-soft': '#FEB8B3',
-                'accent-gold': '#D4AF37',
-                'accent-gold-soft': '#E8D48A',
-                'accent-cyan': '#06B6D4',
-                'accent-indigo': '#4F46E5',
+                primary: {
+                    50: '#f0f6ff',
+                    100: '#e0edff',
+                    200: '#c0daff',
+                    300: '#90bfff',
+                    400: '#5c9dff',
+                    500: '#3b82f6', // Premium Enterprise Blue (Base)
+                    600: '#2563eb', // Deeper vivid blue for buttons
+                    700: '#1d4ed8',
+                    800: '#1e40af',
+                    900: '#1e3a8a',
+                    950: '#091530', // Navy Black for very dark backgrounds
+                },
+                secondary: {
+                    50: '#f8fafc',
+                    100: '#f1f5f9',
+                    200: '#e2e8f0',
+                    300: '#cbd5e1',
+                    400: '#94a3b8',
+                    500: '#64748b',
+                    600: '#475569', 
+                    700: '#334155',
+                    800: '#1e293b',
+                    900: '#0f172a',
+                },
+                accent: {
+                    50: '#ecfeff',
+                    100: '#cffafe',
+                    200: '#a5f3fc',
+                    300: '#67e8f9',
+                    400: '#22d3ee',
+                    500: '#06b6d4', // Cyan Accent
+                    600: '#0891b2',
+                    700: '#0e7490',
+                },
+                surface: {
+                    50: '#ffffff',
+                    100: '#f8fafc',
+                    200: '#f1f5f9',
+                    300: '#e2e8f0',
+                    400: '#cbd5e1',
+                    800: '#1e293b',
+                    900: '#0f172a',
+                },
+            },
+            boxShadow: {
+                'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 12px 24px -4px rgba(0, 0, 0, 0.05)',
+                'premium-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04), 0 20px 25px -5px rgba(0, 0, 0, 0.08)',
+                'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+                'glass-border': 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            },
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                'hero-gradient': 'linear-gradient(135deg, #0a0f29 0%, #1a1f3c 50%, #312e81 100%)',
+                'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+            },
+            animation: {
+                'float': 'float 6s ease-in-out infinite',
+                'float-delayed': 'float 6s ease-in-out 3s infinite',
+                'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'gradient': 'gradient 8s linear infinite',
+            },
+            keyframes: {
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-20px)' },
+                },
+                gradient: {
+                    '0%, 100%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                },
             },
         },
     },
+    safelist: [
+        {
+            pattern: /(bg|text|border|shadow)-(blue|sky|emerald|rose|orange|purple)-(300|400|500)/,
+            variants: ['hover', 'group-hover'],
+        }
+    ],
     plugins: [],
 }
