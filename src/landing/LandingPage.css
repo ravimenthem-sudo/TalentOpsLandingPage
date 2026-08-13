@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+.setup-input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 4px #eff6ff !important;
+  outline: none !important;
+}
+
 :root {
   --navy: #0D1B3E;
   --navy-deep: #080F22;
