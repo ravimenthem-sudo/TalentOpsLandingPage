@@ -11,7 +11,6 @@ export function LandingPage() {
   const [autoRotate, setAutoRotate] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeLifecycleTab, setActiveLifecycleTab] = useState('attract');
-  const [autoRotateLifecycle, setAutoRotateLifecycle] = useState(true);
   const [openHiringStep, setOpenHiringStep] = useState<number | null>(0);
   const [openAboutAccordion, setOpenAboutAccordion] = useState<number | null>(null);
 
@@ -132,17 +131,7 @@ export function LandingPage() {
     return () => clearInterval(timer);
   }, [autoRotate]);
 
-  useEffect(() => {
-    if (!autoRotateLifecycle) return;
-    const timer = setInterval(() => {
-      setActiveLifecycleTab(prev => {
-        const ids = lifecycleTabsData.map(t => t.id);
-        const nextIndex = (ids.indexOf(prev) + 1) % ids.length;
-        return ids[nextIndex];
-      });
-    }, 2000);
-    return () => clearInterval(timer);
-  }, [autoRotateLifecycle]);
+
 
   const faqs = [
     {
@@ -243,15 +232,13 @@ export function LandingPage() {
 
           <div 
             className="lifecycle-dashboard"
-            onMouseEnter={() => setAutoRotateLifecycle(false)}
-            onMouseLeave={() => setAutoRotateLifecycle(true)}
           >
             <div className="lifecycle-tabs">
               {lifecycleTabsData.map(tab => (
                 <div
                   key={tab.id}
                   className={`lifecycle-tab ${activeLifecycleTab === tab.id ? 'active' : ''}`}
-                  onClick={() => setActiveLifecycleTab(tab.id)}
+                  onMouseEnter={() => setActiveLifecycleTab(tab.id)}
                 >
                   {tab.icon} {tab.label}
                 </div>
