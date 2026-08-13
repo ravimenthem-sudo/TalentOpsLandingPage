@@ -126,7 +126,7 @@ function MatrixToggle({ isOn, onClick }: any) {
 }
 
 function SetupWizard({ onBack }: { onBack: () => void }) {
-  const [activeCard, setActiveCard] = useState<number | null>(0);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedModules, setSelectedModules] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
