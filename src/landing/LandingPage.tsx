@@ -517,7 +517,7 @@ export function LandingPage() {
                   <span className="distinction-desc">Build your workforce</span>
                 </div>
               </div>
-              <Link to="/request-demo" className="btn btn-primary" style={{ marginTop: '32px', display: 'inline-flex' }}>Talk to Our Hiring Team →</Link>
+              <a href="https://hiring.ottobon.in" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '32px', display: 'inline-flex' }}>Talk to Our Hiring Team →</a>
             </div>
             <div className="hiring-agency-right">
               <div className="hiring-flow">
