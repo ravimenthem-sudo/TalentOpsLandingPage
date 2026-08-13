@@ -8,7 +8,6 @@ import './LandingPage.css';
 
 export function LandingPage() {
   const [activePillar, setActivePillar] = useState('talent-acquisition');
-  const [autoRotate, setAutoRotate] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeLifecycleTab, setActiveLifecycleTab] = useState('attract');
   const [openHiringStep, setOpenHiringStep] = useState<number | null>(0);
@@ -120,17 +119,6 @@ export function LandingPage() {
     'analytics',
   ];
 
-  useEffect(() => {
-    if (!autoRotate) return;
-    const timer = setInterval(() => {
-      setActivePillar(prev => {
-        const nextIndex = (pillars.indexOf(prev) + 1) % pillars.length;
-        return pillars[nextIndex];
-      });
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [autoRotate]);
-
 
 
   const faqs = [
@@ -230,9 +218,7 @@ export function LandingPage() {
             <p className="section-sub">TalentOps operates your people from the moment you attract talent to the day they grow your organization — without switching between systems.</p>
           </div>
 
-          <div 
-            className="lifecycle-dashboard"
-          >
+          <div className="lifecycle-dashboard">
             <div className="lifecycle-tabs">
               {lifecycleTabsData.map(tab => (
                 <div
@@ -278,12 +264,12 @@ export function LandingPage() {
           <p className="section-sub">Six live product areas covering the complete talent lifecycle — from attracting candidates to measuring performance.</p>
 
           <div className="module-tabs">
-            <div className={`module-tab ${activePillar === 'talent-acquisition' ? 'active' : ''}`} onClick={() => { setActivePillar('talent-acquisition'); setAutoRotate(false); }}>Talent Acquisition</div>
-            <div className={`module-tab ${activePillar === 'employee-management' ? 'active' : ''}`} onClick={() => { setActivePillar('employee-management'); setAutoRotate(false); }}>Employee Management</div>
-            <div className={`module-tab ${activePillar === 'workforce-operations' ? 'active' : ''}`} onClick={() => { setActivePillar('workforce-operations'); setAutoRotate(false); }}>Workforce Operations</div>
-            <div className={`module-tab ${activePillar === 'payroll' ? 'active' : ''}`} onClick={() => { setActivePillar('payroll'); setAutoRotate(false); }}>Payroll &amp; Compensation</div>
-            <div className={`module-tab ${activePillar === 'performance' ? 'active' : ''}`} onClick={() => { setActivePillar('performance'); setAutoRotate(false); }}>Performance Management</div>
-            <div className={`module-tab ${activePillar === 'analytics' ? 'active' : ''}`} onClick={() => { setActivePillar('analytics'); setAutoRotate(false); }}>Reports &amp; Analytics</div>
+            <div className={`module-tab ${activePillar === 'talent-acquisition' ? 'active' : ''}`} onMouseEnter={() => setActivePillar('talent-acquisition')}>Talent Acquisition</div>
+            <div className={`module-tab ${activePillar === 'employee-management' ? 'active' : ''}`} onMouseEnter={() => setActivePillar('employee-management')}>Employee Management</div>
+            <div className={`module-tab ${activePillar === 'workforce-operations' ? 'active' : ''}`} onMouseEnter={() => setActivePillar('workforce-operations')}>Workforce Operations</div>
+            <div className={`module-tab ${activePillar === 'payroll' ? 'active' : ''}`} onMouseEnter={() => setActivePillar('payroll')}>Payroll &amp; Compensation</div>
+            <div className={`module-tab ${activePillar === 'performance' ? 'active' : ''}`} onMouseEnter={() => setActivePillar('performance')}>Performance Management</div>
+            <div className={`module-tab ${activePillar === 'analytics' ? 'active' : ''}`} onMouseEnter={() => setActivePillar('analytics')}>Reports &amp; Analytics</div>
           </div>
 
           {/* Pillar 1: Talent Acquisition */}
@@ -544,8 +530,8 @@ export function LandingPage() {
                   { num: '06', title: 'Hire', desc: 'Select, offer and bring the candidate on board' },
                   { num: '07', title: 'Operate through TalentOps', desc: 'Manage the new hire within the TalentOps platform' },
                 ].map((step, i) => (
-                  <div 
-                    key={i} 
+                  <div
+                    key={i}
                     className={`hiring-step ${openHiringStep === i ? 'active' : ''}`}
                     onClick={() => setOpenHiringStep(openHiringStep === i ? null : i)}
                     style={{ cursor: 'pointer' }}
@@ -586,19 +572,19 @@ export function LandingPage() {
             <p style={{ color: 'var(--gray-600)', fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '40px' }}>
               Stop wrestling with fragmented HR tools. TalentOps unifies your entire employee lifecycle—from seamless onboarding to performance management—into one intuitive platform. Empower your team with automation and insights that let you focus on what truly matters: your people.
             </p>
-            
+
             <div className="about-accordion">
               {[
                 { title: 'Eliminate manual data entry', desc: 'Automate repetitive tasks and let your team focus on strategic initiatives rather than paperwork.' },
                 { title: 'Boost employee engagement', desc: 'Create a seamless experience that keeps your team connected, motivated, and aligned with company goals.' },
                 { title: 'Make data-driven decisions', desc: 'Access real-time analytics and insights to optimize your workforce operations.' }
               ].map((item, i) => (
-                <div 
-                  key={i} 
-                  style={{ 
-                    border: '1.5px solid', 
-                    borderRadius: '12px', 
-                    padding: '20px 24px', 
+                <div
+                  key={i}
+                  style={{
+                    border: '1.5px solid',
+                    borderRadius: '12px',
+                    padding: '20px 24px',
                     marginBottom: '16px',
                     cursor: 'pointer',
                     transition: 'all 0.3s',
@@ -610,10 +596,10 @@ export function LandingPage() {
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                      <div style={{ 
-                        width: '36px', height: '36px', 
-                        borderRadius: '50%', 
-                        background: 'var(--blue-light)', 
+                      <div style={{
+                        width: '36px', height: '36px',
+                        borderRadius: '50%',
+                        background: 'var(--blue-light)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         color: 'var(--blue-brand)'
                       }}>
