@@ -785,7 +785,7 @@ export function LandingPage() {
           <p>See how TalentOps brings your complete talent lifecycle together — from recruitment to payroll to performance.</p>
           <div className="cta-btns">
             <Link to="/request-demo" className="btn btn-white btn-lg">Book a Demo →</Link>
-            <a href="#pillars" className="btn btn-outline-white btn-lg">Explore the Platform</a>
+            <a href="https://hiring.ottobon.in" target="_blank" rel="noopener noreferrer" className="btn btn-outline-white btn-lg">Explore the Platform</a>
           </div>
           <p className="cta-note">30-minute walkthrough · No commitment required · All modules live</p>
         </div>
