@@ -67,7 +67,7 @@ export function SolutionPage({ data }: SolutionPageProps) {
       {/* HERO SECTION */}
       <section className="solution-hero">
         <div className="container">
-          <div className="solution-hero-tag" style={{ color: data.brandColor, borderColor: data.brandColor }}>
+          <div className="solution-hero-tag">
             <span className="dot" style={{ backgroundColor: data.brandColor }}></span> {data.tag}
           </div>
           <h1 className="solution-hero-title">
@@ -76,7 +76,7 @@ export function SolutionPage({ data }: SolutionPageProps) {
           <p className="solution-hero-subtitle">{data.subtitle}</p>
           <div className="solution-hero-cta">
             <button className="btn btn-solid" style={{ backgroundColor: data.brandColor }}>{data.primaryCtaText}</button>
-            <button className="btn btn-outline" style={{ borderColor: '#d1d5db', color: '#4b5563' }}>{data.secondaryCtaText}</button>
+            <button className="btn btn-outline-white">{data.secondaryCtaText}</button>
           </div>
         </div>
       </section>
